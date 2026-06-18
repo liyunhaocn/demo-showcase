@@ -2,6 +2,8 @@
 
 Daily Demo Shelf 是一个纯静态展示平台，用来收录每天生成的创业 Demo。每个 Demo 都包含产品截图、价值主张、目标用户、痛点、盈利路径、验证记录、技术栈和演示/代码链接。
 
+当前首个 Demo `AgentGate` 已内置在 `demos/agentgate/`，部署到 Pages 后可以直接从展示站打开演示。
+
 ## 本地运行
 
 ```bash
@@ -63,9 +65,10 @@ npm run validate
 1. 选一个创业点子。
 2. 做出可运行 Demo。
 3. 截图保存到 `assets/`。
-4. 用 `npm run add-demo` 追加到 `data/demos.json`。
-5. `npm run validate`。
-6. 同步推送到 GitHub Pages 和 Gitee Pages。
+4. 如果 Demo 是纯前端静态产物，把构建结果放到 `demos/<demo-id>/`。
+5. 用 `npm run add-demo` 追加到 `data/demos.json`。
+6. `npm run validate`。
+7. 同步推送到 GitHub Pages 和 Gitee Pages。
 
 ## 双端 remote 示例
 

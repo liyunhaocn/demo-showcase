@@ -23,8 +23,8 @@
       "stack": ["Vite", "React", "TypeScript", "localStorage", "Playwright smoke"],
       "cover": "./assets/agentgate-cover.png",
       "links": {
-        "demo": "http://127.0.0.1:5173/",
-        "repo": "file:///Users/yunhao/src/agentgate"
+        "demo": "./demos/agentgate/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase/tree/main/demos/agentgate"
       }
     }
   ]
