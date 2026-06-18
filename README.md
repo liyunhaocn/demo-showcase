@@ -79,6 +79,7 @@ npm run validate
 - Build command：`npm run build`
 - Build output directory：`dist`
 - Root directory：留空
+- 不要把 Build output directory 填成 `/`、`.` 或仓库根目录；否则 Cloudflare 会把 `node_modules` 一起上传，触发 `workerd` 文件过大的错误。
 
 本地验证与发布辅助命令：
 

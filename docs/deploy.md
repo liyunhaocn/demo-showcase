@@ -24,10 +24,13 @@ Recommended for daily automation.
 - Build output directory: `dist`.
 - Root directory: leave empty.
 - Environment variables: none required.
+- Do not use `npx wrangler deploy` as the build command. If you use Wrangler, use Direct Upload below.
 - Expected URL: Cloudflare will create a `*.pages.dev` URL, for example `https://demo-showcase.pages.dev/`.
 - Official docs: https://developers.cloudflare.com/pages/configuration/git-integration/
 
 Cloudflare's docs say Git integration can automatically deploy when a connected GitHub or GitLab branch changes.
+
+If the deploy log says it is uploading `/opt/buildhome/repo` or includes `node_modules/workerd`, the output directory is wrong. Cloudflare must upload `dist`, not the repository root.
 
 ## Cloudflare Pages Direct Upload
 
@@ -41,6 +44,26 @@ npx wrangler pages deploy dist --project-name demo-showcase
 This requires Cloudflare authentication through Wrangler or `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
 
 Official docs: https://developers.cloudflare.com/pages/get-started/direct-upload/
+
+## Cloudflare Error: Asset Too Large
+
+Symptom:
+
+```text
+Asset too large.
+Cloudflare Workers supports assets with sizes of up to 25 MiB.
+file /opt/buildhome/repo/node_modules/workerd/bin/workerd
+assets directory "/opt/buildhome/repo"
+```
+
+Cause: Cloudflare is treating the repository root as the assets directory, so build-time dependencies inside `node_modules/` are being uploaded.
+
+Fix:
+
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Direct Upload command: `npx wrangler pages deploy dist --project-name demo-showcase`
+- If using a Workers-style deploy, keep `wrangler.toml` in this repo so `[assets].directory` points to `./dist`.
 
 ## GitHub Pages
 
