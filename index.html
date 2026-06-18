@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Daily Demo Shelf collects daily startup demos, validation notes, monetization paths, and deployment links."
+    />
+    <title>Daily Demo Shelf</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">DS</span>
+          <div>
+            <strong>Daily Demo Shelf</strong>
+            <span>每日创业 Demo 展示台</span>
+          </div>
+        </div>
+        <nav aria-label="Primary">
+          <a href="#catalog">产品库</a>
+          <a href="#deployment">部署</a>
+          <a href="#workflow">流程</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="overview" aria-labelledby="overview-title">
+          <div class="overview-copy">
+            <p class="eyebrow">Live product index</p>
+            <h1 id="overview-title">每天生成的创业产品，统一展示、验证、分发。</h1>
+            <p>
+              把每日 AI 创意 Demo 沉淀为可访问的产品目录，记录价值主张、可运行地址、盈利路径和验证状态。
+            </p>
+          </div>
+          <div class="metrics" aria-label="Portfolio metrics">
+            <div>
+              <span>产品数</span>
+              <strong id="metric-total">0</strong>
+            </div>
+            <div>
+              <span>可演示</span>
+              <strong id="metric-live">0</strong>
+            </div>
+            <div>
+              <span>可盈利假设</span>
+              <strong id="metric-monetization">0</strong>
+            </div>
+            <div>
+              <span>本周新增</span>
+              <strong id="metric-week">0</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="featured-band" aria-labelledby="featured-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Latest validated demo</p>
+              <h2 id="featured-title">最新成品</h2>
+            </div>
+            <span id="featured-date" class="date-pill">--</span>
+          </div>
+          <article id="featured-demo" class="featured-demo"></article>
+        </section>
+
+        <section id="catalog" class="catalog" aria-labelledby="catalog-title">
+          <div class="section-heading catalog-heading">
+            <div>
+              <p class="eyebrow">Catalog</p>
+              <h2 id="catalog-title">创业 Demo 产品库</h2>
+            </div>
+            <div class="controls" aria-label="Catalog controls">
+              <label>
+                <span>搜索</span>
+                <input id="search-input" type="search" placeholder="产品、标签、痛点" />
+              </label>
+              <label>
+                <span>状态</span>
+                <select id="status-filter">
+                  <option value="all">全部</option>
+                  <option value="validated">已验证</option>
+                  <option value="prototype">原型</option>
+                  <option value="queued">排队</option>
+                </select>
+              </label>
+              <label>
+                <span>排序</span>
+                <select id="sort-select">
+                  <option value="date-desc">最新优先</option>
+                  <option value="score-desc">评分优先</option>
+                  <option value="name-asc">名称 A-Z</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="catalog-layout">
+            <div id="demo-grid" class="demo-grid" aria-live="polite"></div>
+            <aside id="demo-detail" class="detail-panel" aria-live="polite"></aside>
+          </div>
+        </section>
+
+        <section id="deployment" class="deployment" aria-labelledby="deployment-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Free hosting</p>
+              <h2 id="deployment-title">GitHub + Gitee 双端免费部署</h2>
+            </div>
+          </div>
+          <div id="deployment-grid" class="deployment-grid"></div>
+        </section>
+
+        <section id="workflow" class="workflow" aria-labelledby="workflow-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Daily operation</p>
+              <h2 id="workflow-title">每日生产流</h2>
+            </div>
+          </div>
+          <ol class="timeline">
+            <li>
+              <strong>选题</strong>
+              <span>每天从 AI/行业资讯里挑 1 个可盈利切口。</span>
+            </li>
+            <li>
+              <strong>建 Demo</strong>
+              <span>生成前端可运行版本、截图、验证记录和商业化假设。</span>
+            </li>
+            <li>
+              <strong>入库</strong>
+              <span>用 `npm run add-demo -- --name ...` 追加到 `data/demos.json`。</span>
+            </li>
+            <li>
+              <strong>发布</strong>
+              <span>一次提交，同步推送 GitHub Pages 和 Gitee Pages，国内入口优先走 Gitee。</span>
+            </li>
+          </ol>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

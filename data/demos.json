@@ -1,0 +1,31 @@
+{
+  "demos": [
+    {
+      "id": "agentgate-2026-06-18",
+      "name": "AgentGate",
+      "date": "2026-06-18",
+      "status": "validated",
+      "score": 86,
+      "tagline": "面向 SMB 的 AI Agent 上线评估与权限治理台。",
+      "audience": "20-500 人公司的创始人、运营负责人、RevOps、Customer Ops、Finance Ops",
+      "problem": "团队想让 AI agent 执行 CRM、客服、财务等重复流程，但缺少 ROI、权限、审批和审计的上线前评估。",
+      "tags": ["AI Agent", "权限治理", "SMB", "运营自动化", "SaaS"],
+      "monetization": [
+        "按 workspace 收费：基础版每月固定订阅。",
+        "按评估流程数收费：适合顾问和中小团队。",
+        "后续增值：接入 Slack、HubSpot、Notion、飞书审批等集成。"
+      ],
+      "validation": [
+        "已实现本地可运行 MVP。",
+        "架构、QA、UI 走查均通过。",
+        "覆盖低/中/高风险 seed、权限矩阵、brief/checklist、localStorage recovery。"
+      ],
+      "stack": ["Vite", "React", "TypeScript", "localStorage", "Playwright smoke"],
+      "cover": "./assets/agentgate-cover.png",
+      "links": {
+        "demo": "http://127.0.0.1:5173/",
+        "repo": "file:///Users/yunhao/src/agentgate"
+      }
+    }
+  ]
+}
