@@ -14,17 +14,20 @@ For a free first version, use GitHub Pages + Gitee Pages as two mirrors. Gitee i
 ## GitHub Pages
 
 - Use as overseas mirror and open-source portfolio.
-- Repository source: root directory or `main` branch.
+- Repository source: `main` branch `/` or `gh-pages` branch `/`.
 - Build command: none.
 - Output directory: `/` or repository root.
+- Current helper also pushes `main` to `github/gh-pages` so either source can be selected in GitHub settings.
+- Expected URL after Pages is enabled: `https://liyunhaocn.github.io/demo-showcase/`.
 - Official docs: https://docs.github.com/en/pages
 
 ## Gitee Pages
 
 - Use as the mainland-facing free entry if the current account can enable Pages.
-- Repository source: root directory.
+- Repository source: `main` branch `/`.
 - Build command: none.
 - Output directory: repository root.
+- Expected URL after Pages is enabled: `https://liyunhaocn.gitee.io/demo-showcase/`.
 - Current availability and review rules must be checked in the logged-in Gitee account.
 - Gitee Pages landing page: https://gitee.com/pages?skip_mobile=true
 
@@ -40,6 +43,7 @@ git remote add gitee git@gitee.com:<user>/demo-showcase.git
 
 git push github main
 git push gitee main
+git push github main:gh-pages
 ```
 
 After both remotes exist, the helper command can publish the current branch to both sides:

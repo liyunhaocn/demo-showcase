@@ -28,3 +28,7 @@ fi
 
 git push github "$branch"
 git push gitee "$branch"
+
+if [[ "$branch" == "main" ]]; then
+  git push github main:gh-pages
+fi

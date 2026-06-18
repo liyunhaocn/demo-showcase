@@ -86,4 +86,9 @@ git push gitee main
 npm run publish:dual
 ```
 
+当前预期公开地址：
+
+- GitHub Pages：`https://liyunhaocn.github.io/demo-showcase/`
+- Gitee Pages：`https://liyunhaocn.gitee.io/demo-showcase/`
+
 详细部署步骤见 `docs/deploy.md`。
