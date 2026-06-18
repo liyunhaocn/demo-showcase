@@ -14,32 +14,32 @@ const statusLabels = {
 
 const deploymentOptions = [
   {
-    name: 'Gitee Pages',
-    fit: '国内访问入口，适合纯静态页面和公开 Demo 展示；开通状态以当前账号为准。',
-    cost: '免费优先，可能有审核/功能限制',
-    url: 'https://gitee.com/pages?skip_mobile=true',
-  },
-  {
-    name: 'GitHub Pages',
-    fit: '海外镜像和开源展示入口，适合跟 GitHub 仓库自动发布同一份静态站。',
-    cost: '免费静态托管',
-    url: 'https://docs.github.com/en/pages',
-  },
-  {
-    name: '双端 Git remote',
-    fit: '同一套代码同时推送到 GitHub 和 Gitee，避免每天手动维护两份页面。',
-    cost: '免费，依赖两个代码托管账号',
-    url: './docs/deploy.md',
-  },
-  {
     name: 'Cloudflare Pages',
-    fit: '免费海外备选，用于 Gitee Pages 不可用时保留第三个公开镜像。',
-    cost: '有免费套餐，国内访问不作主保障',
+    fit: '新的主站托管。连接 GitHub 仓库后，main 分支每次 push 都会自动部署。',
+    cost: '免费方案可用，静态资源请求不计费',
     url: 'https://developers.cloudflare.com/pages/',
   },
   {
+    name: 'GitHub Pages',
+    fit: '保留为备份镜像和开源展示入口，当前已经上线。',
+    cost: '免费静态托管，作为 fallback',
+    url: 'https://docs.github.com/en/pages',
+  },
+  {
+    name: 'GitHub -> Cloudflare 自动部署',
+    fit: '推荐路径：Cloudflare Pages 绑定 GitHub repo，后续每天只需要 push main。',
+    cost: '免费，依赖 Cloudflare 授权 GitHub',
+    url: './docs/deploy.md',
+  },
+  {
+    name: 'Wrangler Direct Upload',
+    fit: '如果不想绑定 GitHub，可以本地 build 后用 Wrangler 直接上传 dist。',
+    cost: '免费，需 Cloudflare API token',
+    url: 'https://developers.cloudflare.com/pages/get-started/direct-upload/',
+  },
+  {
     name: 'Vercel / Netlify',
-    fit: '免费预览部署和产品演示备选，适合临时分享和 PR 预览。',
+    fit: '仅作额外备选，不作为当前主线。',
     cost: '有免费入门方案，国内访问不作主保障',
     url: 'https://vercel.com/docs',
   },

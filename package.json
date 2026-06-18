@@ -4,9 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "node scripts/build-static.mjs",
     "dev": "python3 -m http.server 4174",
     "validate": "node scripts/validate.mjs",
     "add-demo": "node scripts/add-demo.mjs",
-    "publish:dual": "bash scripts/publish-dual.sh"
+    "deploy:cloudflare": "npm run build && npx wrangler pages deploy dist --project-name demo-showcase",
+    "publish": "bash scripts/publish-cloudflare.sh"
   }
 }

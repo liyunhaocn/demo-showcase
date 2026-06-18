@@ -50,15 +50,15 @@ npm run add-demo -- \
 npm run validate
 ```
 
-## 免费双端部署建议
+## 免费部署建议
 
 优先级建议：
 
-1. Gitee Pages：国内访问入口，前提是当前账号能开通 Pages，且内容通过平台审核。
-2. GitHub Pages：海外镜像和开源展示入口，免费、稳定、自动化成熟。
-3. Cloudflare Pages / Vercel / Netlify：仅作免费备选镜像，不作为中国大陆主站保障。
+1. Cloudflare Pages：主站托管，连接 GitHub 后自动部署；也支持 Wrangler 直接上传 `dist`。
+2. GitHub Pages：保留为备份镜像和代码展示页，当前已经上线。
+3. Vercel / Netlify：仅作额外免费备选，不作为当前主线。
 
-双端部署方式：同一份静态代码、同一个 `data/demos.json`，配置两个 Git remote，每天新增 Demo 后同步推到 GitHub 和 Gitee。若绑定自定义域名并面向中国大陆正式运营，需要按域名和托管平台要求处理实名认证、备案和内容合规；默认平台二级域名更适合先做免费展示验证。
+推荐部署方式：同一份静态代码、同一个 `data/demos.json`，每天新增 Demo 后 push 到 GitHub，Cloudflare Pages 自动部署主站。若后续绑定自定义域名并面向中国大陆正式运营，需要按域名和访问链路要求处理实名认证、备案和内容合规。
 
 ## 每日流程
 
@@ -68,27 +68,29 @@ npm run validate
 4. 如果 Demo 是纯前端静态产物，把构建结果放到 `demos/<demo-id>/`。
 5. 用 `npm run add-demo` 追加到 `data/demos.json`。
 6. `npm run validate`。
-7. 同步推送到 GitHub Pages 和 Gitee Pages。
+7. 推送到 GitHub，由 Cloudflare Pages 自动部署。
 
-## 双端 remote 示例
+## Cloudflare Pages 设置
+
+推荐在 Cloudflare 控制台连接 GitHub 仓库：
+
+- Repository：`liyunhaocn/demo-showcase`
+- Production branch：`main`
+- Build command：`npm run build`
+- Build output directory：`dist`
+- Root directory：留空
+
+本地验证与发布辅助命令：
 
 ```bash
-git remote add github git@github.com:<user>/demo-showcase.git
-git remote add gitee git@gitee.com:<user>/demo-showcase.git
-
-git push github main
-git push gitee main
-```
-
-也可以在配置好两个 remote 后使用：
-
-```bash
-npm run publish:dual
+npm run validate
+npm run build
+npm run publish
 ```
 
 当前预期公开地址：
 
+- Cloudflare Pages：创建项目后由 Cloudflare 生成，例如 `https://demo-showcase.pages.dev/`
 - GitHub Pages：`https://liyunhaocn.github.io/demo-showcase/`
-- Gitee Pages：`https://liyunhaocn.gitee.io/demo-showcase/`
 
 详细部署步骤见 `docs/deploy.md`。
