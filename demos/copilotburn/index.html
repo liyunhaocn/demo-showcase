@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CopilotBurn</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="product-name">CopilotBurn</span>
+          <div>
+            <h1>Copilot Spend Brief</h1>
+            <p>See how GitHub Copilot usage-based billing turns team activity into AI credit burn, then ship the controls that keep spend predictable.</p>
+          </div>
+        </div>
+        <div class="simulation-badge" id="simulation-badge">
+          Demo simulation: deterministic results, no live Copilot billing data.
+        </div>
+      </header>
+
+      <div class="notice-row" id="storage-notice" role="status" aria-live="polite" hidden></div>
+      <div class="restore-banner" id="restore-banner" hidden>
+        <div>
+          <strong>Saved brief found</strong>
+          <span>Restore the last deterministic report from this browser.</span>
+        </div>
+        <button class="secondary-button" type="button" id="restore-button" data-event="restore_last_brief_clicked">Restore last brief</button>
+      </div>
+
+      <main class="workspace">
+        <section class="input-panel" aria-labelledby="form-title">
+          <div class="section-heading">
+            <div>
+              <span class="kicker">Diagnostic inputs</span>
+              <h2 id="form-title">Org profile</h2>
+            </div>
+          </div>
+
+          <div class="preset-strip" aria-label="CopilotBurn presets">
+            <button class="preset-button" type="button" data-preset="startup-team" data-event="preset_selected">Try a startup team preset</button>
+            <button class="preset-button" type="button" data-preset="platform-org" data-event="preset_selected">Try a platform org preset</button>
+            <button class="preset-button" type="button" data-preset="consultant-bundle" data-event="preset_selected">Try a consultant preset</button>
+          </div>
+
+          <form id="burn-form" class="brand-form" novalidate>
+            <label>
+              Organization name
+              <input id="org-name" name="orgName" autocomplete="organization" placeholder="Example: Northstar Product Studio" />
+              <span class="field-error" id="org-name-error"></span>
+            </label>
+
+            <label>
+              GitHub org / repo hub
+              <input id="github-org" name="githubOrg" placeholder="northstar-product-studio" />
+              <span class="field-error" id="github-org-error"></span>
+            </label>
+
+            <label>
+              Plan tier
+              <select id="plan-tier" name="plan">
+                <option value="individual">Individual</option>
+                <option value="business" selected>Business</option>
+                <option value="enterprise">Enterprise</option>
+              </select>
+            </label>
+
+            <div class="two-up">
+              <label>
+                Seats
+                <input id="seats" name="seats" inputmode="numeric" type="number" min="1" step="1" placeholder="18" />
+                <span class="field-error" id="seats-error"></span>
+              </label>
+
+              <label>
+                Active developers
+                <input id="active-developers" name="activeDevelopers" inputmode="numeric" type="number" min="1" step="1" placeholder="12" />
+                <span class="field-error" id="active-developers-error"></span>
+              </label>
+            </div>
+
+            <div class="two-up">
+              <label>
+                Repos in scope
+                <input id="repos" name="repos" inputmode="numeric" type="number" min="1" step="1" placeholder="24" />
+                <span class="field-error" id="repos-error"></span>
+              </label>
+
+              <label>
+                PRs per month
+                <input id="prs-per-month" name="prsPerMonth" inputmode="numeric" type="number" min="1" step="1" placeholder="420" />
+                <span class="field-error" id="prs-per-month-error"></span>
+              </label>
+            </div>
+
+            <div class="two-up">
+              <label>
+                Code review share (%)
+                <input id="code-review-share" name="codeReviewShare" inputmode="decimal" type="number" min="0" max="100" step="1" placeholder="58" />
+                <span class="field-error" id="code-review-share-error"></span>
+              </label>
+
+              <label>
+                Advanced model share (%)
+                <input id="advanced-model-share" name="advancedModelShare" inputmode="decimal" type="number" min="0" max="100" step="1" placeholder="22" />
+                <span class="field-error" id="advanced-model-share-error"></span>
+              </label>
+            </div>
+
+            <label>
+              Monthly credit cap
+              <input id="monthly-credit-cap" name="monthlyCreditCap" inputmode="numeric" type="number" min="0" step="1" placeholder="1600" />
+              <span class="field-hint" id="credit-cap-hint">Optional. If blank, the demo uses plan allowance and workload shape to estimate buffer.</span>
+              <span class="field-error" id="monthly-credit-cap-error"></span>
+            </label>
+
+            <fieldset>
+              <legend>Objective</legend>
+              <div class="objective-control" role="radiogroup" aria-label="Objective">
+                <label>
+                  <input type="radio" name="objective" value="forecast" checked />
+                  <span>Forecast burn</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="budget" />
+                  <span>Stay under budget</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="governance" />
+                  <span>Prepare finance review</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button class="primary-button" type="submit" data-event="manual_generate_clicked">Generate spend brief</button>
+              <button class="secondary-button" type="button" id="reset-button" data-event="reset_demo_clicked">Reset demo</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="analysis-panel" aria-labelledby="analysis-title">
+          <div class="section-heading analysis-heading">
+            <div>
+              <span class="kicker">Spend brief</span>
+              <h2 id="analysis-title">Burn forecast and controls</h2>
+            </div>
+            <div class="view-toggle" role="radiogroup" aria-label="Report view">
+              <label>
+                <input type="radio" name="report-view" value="founder" checked />
+                <span data-event="founder_view_selected">Founder</span>
+              </label>
+              <label>
+                <input type="radio" name="report-view" value="consultant" />
+                <span data-event="consultant_view_selected">Consultant</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <h3>Run a burn diagnostic to see projected credits, overage risk, guardrails, and this week's cost controls.</h3>
+            <p>Use a preset or enter an org profile. Results are deterministic demo simulations and do not call live billing or usage services.</p>
+          </div>
+
+          <div class="report-shell" id="report-shell" hidden>
+            <div class="report-status-row">
+              <span class="simulation-chip">Demo simulation</span>
+              <span id="generated-at"></span>
+            </div>
+
+            <div class="score-grid" id="score-grid"></div>
+            <div class="summary-grid" id="summary-grid"></div>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Billing drivers</span>
+                  <h3>Where credits go</h3>
+                </div>
+              </div>
+              <div class="prompt-list" id="prompt-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Guardrails</span>
+                  <h3>What the org should control before the bill closes</h3>
+                </div>
+              </div>
+              <div class="readiness-list" id="readiness-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">This week's controls</span>
+                  <h3>Prioritized action backlog</h3>
+                </div>
+              </div>
+              <div class="action-list" id="action-list"></div>
+            </section>
+
+            <div class="export-bar">
+              <button class="primary-button" type="button" id="copy-button" data-event="brief_copied">Copy weekly burn brief</button>
+              <button class="secondary-button" type="button" id="download-button" data-event="markdown_downloaded">Download Markdown brief</button>
+              <button class="secondary-button" type="button" id="fallback-button">Show Markdown fallback</button>
+            </div>
+
+            <div class="fallback-panel" id="fallback-panel" hidden>
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Clipboard fallback</span>
+                  <h3>Select and copy manually</h3>
+                </div>
+                <div class="fallback-actions">
+                  <button class="secondary-button" type="button" id="select-fallback-button">Select all</button>
+                  <button class="secondary-button" type="button" id="close-fallback-button">Close</button>
+                </div>
+              </div>
+              <textarea id="fallback-markdown" readonly rows="12"></textarea>
+            </div>
+
+            <div class="interest-panel">
+              <strong>Want a live telemetry version later?</strong>
+              <span>This demo records interest locally only. A future product would connect GitHub billing and usage telemetry before business decisions.</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

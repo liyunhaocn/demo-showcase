@@ -1,6 +1,47 @@
 {
   "demos": [
     {
+      "id": "copilotburn-2026-06-20",
+      "name": "CopilotBurn",
+      "date": "2026-06-20",
+      "status": "validated",
+      "score": 72,
+      "tagline": "GitHub Copilot usage-based billing forecast that exposes burn drivers, overage risk, and weekly cost controls.",
+      "audience": "Founders, engineering managers, DevOps leads, finance ops, and fractional CTOs",
+      "problem": "Teams using GitHub Copilot can lose spend visibility as usage-based billing, code review minutes, and agentic workflows push AI credit burn past the monthly cap.",
+      "tags": [
+        "GitHub Copilot",
+        "AI Credits",
+        "DevEx",
+        "FinOps",
+        "Engineering Ops"
+      ],
+      "monetization": [
+        "Free burn brief",
+        "Team spend tracking at $39/mo",
+        "Consultant multi-org packs at $99/mo",
+        "Finance review exports"
+      ],
+      "validation": [
+        "Isolated demo implemented and locally runnable",
+        "Deterministic spend forecast and Markdown export verified",
+        "copy fallback and storage-disabled states are testable",
+        "UI responsive at 375px and desktop"
+      ],
+      "stack": [
+        "Static HTML",
+        "CSS",
+        "ES Modules",
+        "localStorage",
+        "Clipboard API"
+      ],
+      "cover": "./assets/copilotburn-cover.png",
+      "links": {
+        "demo": "./demos/copilotburn/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase/tree/main/demos/copilotburn"
+      }
+    },
+    {
       "id": "answerrank-2026-06-19",
       "name": "AnswerRank",
       "date": "2026-06-19",
