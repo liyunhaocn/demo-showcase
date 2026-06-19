@@ -1,26 +1,80 @@
 {
   "demos": [
     {
+      "id": "answerrank-2026-06-19",
+      "name": "AnswerRank",
+      "date": "2026-06-19",
+      "status": "validated",
+      "score": 87,
+      "tagline": "AI answer visibility diagnostic for B2B brands, with competitor gaps and weekly content fixes.",
+      "audience": "Founder-led B2B SaaS teams, solo marketers, SEO/GEO consultants, and content agencies",
+      "problem": "Small B2B brands do not know whether AI search and assistant answers mention them, cite competitors, or miss their strongest proof.",
+      "tags": [
+        "AI Search",
+        "GEO",
+        "B2B SaaS",
+        "Content Strategy",
+        "Marketing Ops"
+      ],
+      "monetization": [
+        "Free demo brief",
+        "Founder live tracking at $19/mo",
+        "Consultant multi-client reports at $49/mo",
+        "One-off GEO audit pack at $99"
+      ],
+      "validation": [
+        "Isolated demo implemented and locally runnable",
+        "Deterministic brief generation and Markdown export verified",
+        "copy fallback and storage-disabled states are testable",
+        "UI responsive at 375px and desktop"
+      ],
+      "stack": [
+        "Static HTML",
+        "CSS",
+        "ES Modules",
+        "localStorage",
+        "Clipboard API"
+      ],
+      "cover": "./assets/answerrank-cover.png",
+      "links": {
+        "demo": "./demos/answerrank/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase/tree/main/demos/answerrank"
+      }
+    },
+    {
       "id": "agentgate-2026-06-18",
       "name": "AgentGate",
       "date": "2026-06-18",
       "status": "validated",
-      "score": 86,
-      "tagline": "面向 SMB 的 AI Agent 上线评估与权限治理台。",
+      "score": 90,
+      "tagline": "ROI, permissions, approvals, and audit-ready launch brief for AI agents.",
       "audience": "20-500 人公司的创始人、运营负责人、RevOps、Customer Ops、Finance Ops",
       "problem": "团队想让 AI agent 执行 CRM、客服、财务等重复流程，但缺少 ROI、权限、审批和审计的上线前评估。",
-      "tags": ["AI Agent", "权限治理", "SMB", "运营自动化", "SaaS"],
+      "tags": [
+        "AI Agent",
+        "权限治理",
+        "SMB",
+        "运营自动化",
+        "SaaS"
+      ],
       "monetization": [
-        "按 workspace 收费：基础版每月固定订阅。",
-        "按评估流程数收费：适合顾问和中小团队。",
-        "后续增值：接入 Slack、HubSpot、Notion、飞书审批等集成。"
+        "Free：基础 Agent Launch Brief 可复制和 Markdown 导出。",
+        "Pro：多 workflow 历史、模板库和顾问版导出。",
+        "Consultant / Service pack：白标报告、多客户 workspace 和 5-flow audit。"
       ],
       "validation": [
-        "已实现本地可运行 MVP。",
-        "架构、QA、UI 走查均通过。",
-        "覆盖低/中/高风险 seed、权限矩阵、brief/checklist、localStorage recovery。"
+        "已实现本地可运行 MVP 并完成增量报告能力。",
+        "覆盖 Copy brief、Markdown export、升级提示和顾问版报告文案。",
+        "覆盖真实 agent use-case seed、低/中/高风险、权限矩阵、localStorage recovery。"
       ],
-      "stack": ["Vite", "React", "TypeScript", "localStorage", "Playwright smoke"],
+      "stack": [
+        "Vite",
+        "React",
+        "TypeScript",
+        "localStorage",
+        "Markdown export",
+        "Playwright smoke"
+      ],
       "cover": "./assets/agentgate-cover.png",
       "links": {
         "demo": "./demos/agentgate/",
