@@ -1,6 +1,46 @@
 {
   "demos": [
     {
+      "id": "modelshift-2026-06-20",
+      "name": "ModelShift",
+      "date": "2026-06-20",
+      "status": "validated",
+      "score": 76,
+      "tagline": "Model retirement and migration diagnostic that surfaces affected workflows, fallback gaps, and rollback actions before a provider change breaks production.",
+      "audience": "Founders, product engineers, platform teams, AI ops leads, and consultants managing model migrations",
+      "problem": "Teams depend on model providers and versions that change or retire, but they do not have a lightweight way to map affected workflows, fallback readiness, and cutover actions.",
+      "tags": [
+        "Model Migration",
+        "AI Ops",
+        "Reliability",
+        "LLM",
+        "Release Management"
+      ],
+      "monetization": [
+        "Free migration brief",
+        "Team migration planning at /mo",
+        "Consultant migration audit packs at /mo"
+      ],
+      "validation": [
+        "Isolated demo implemented and locally runnable",
+        "Deterministic migration brief and Markdown export verified",
+        "copy fallback and storage-disabled states are testable",
+        "UI responsive at 375px and desktop"
+      ],
+      "stack": [
+        "Static HTML",
+        "CSS",
+        "ES Modules",
+        "localStorage",
+        "Clipboard API"
+      ],
+      "cover": "./assets/modelshift-cover.png",
+      "links": {
+        "demo": "./demos/modelshift/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase/tree/main/demos/modelshift"
+      }
+    },
+    {
       "id": "copilotburn-2026-06-20",
       "name": "CopilotBurn",
       "date": "2026-06-20",
