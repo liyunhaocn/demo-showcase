@@ -1,6 +1,44 @@
 {
   "demos": [
     {
+      "id": "release-note-impact-radar-2026-06-22",
+      "name": "Release Note Impact Radar",
+      "date": "2026-06-22",
+      "status": "validated",
+      "score": 84,
+      "tagline": "AI release note to feature impact matrix, with owner checklists and release actions.",
+      "audience": "AI product PMs, platform leads, QA owners, and engineering managers",
+      "problem": "Teams read release notes but cannot quickly map what changed to their own features, who owns each impact, and what action to take before a release ships.",
+      "tags": [
+        "Release Notes",
+        "Impact Radar",
+        "AI QA",
+        "Release Ops"
+      ],
+      "monetization": [
+        "Free impact brief",
+        "Team workflow at $29/mo",
+        "Consultant audit pack at $79/mo"
+      ],
+      "validation": [
+        "Deterministic impact brief and Markdown export verified",
+        "copy fallback and storage-disabled states testable",
+        "responsive at 375px and desktop"
+      ],
+      "stack": [
+        "Static HTML",
+        "CSS",
+        "ES Modules",
+        "localStorage",
+        "Clipboard API"
+      ],
+      "cover": "./assets/release-note-impact-radar-cover.png",
+      "links": {
+        "demo": "./demos/release-note-impact-radar/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase/tree/main/demos/release-note-impact-radar"
+      }
+    },
+    {
       "id": "prompt-drift-lab-2026-06-21",
       "name": "Prompt Drift Lab",
       "date": "2026-06-21",
@@ -169,24 +207,24 @@
       "status": "validated",
       "score": 90,
       "tagline": "ROI, permissions, approvals, and audit-ready launch brief for AI agents.",
-      "audience": "20-500 \u4eba\u516c\u53f8\u7684\u521b\u59cb\u4eba\u3001\u8fd0\u8425\u8d1f\u8d23\u4eba\u3001RevOps\u3001Customer Ops\u3001Finance Ops",
-      "problem": "\u56e2\u961f\u60f3\u8ba9 AI agent \u6267\u884c CRM\u3001\u5ba2\u670d\u3001\u8d22\u52a1\u7b49\u91cd\u590d\u6d41\u7a0b\uff0c\u4f46\u7f3a\u5c11 ROI\u3001\u6743\u9650\u3001\u5ba1\u6279\u548c\u5ba1\u8ba1\u7684\u4e0a\u7ebf\u524d\u8bc4\u4f30\u3002",
+      "audience": "20-500 人公司的创始人、运营负责人、RevOps、Customer Ops、Finance Ops",
+      "problem": "团队想让 AI agent 执行 CRM、客服、财务等重复流程，但缺少 ROI、权限、审批和审计的上线前评估。",
       "tags": [
         "AI Agent",
-        "\u6743\u9650\u6cbb\u7406",
+        "权限治理",
         "SMB",
-        "\u8fd0\u8425\u81ea\u52a8\u5316",
+        "运营自动化",
         "SaaS"
       ],
       "monetization": [
-        "Free\uff1a\u57fa\u7840 Agent Launch Brief \u53ef\u590d\u5236\u548c Markdown \u5bfc\u51fa\u3002",
-        "Pro\uff1a\u591a workflow \u5386\u53f2\u3001\u6a21\u677f\u5e93\u548c\u987e\u95ee\u7248\u5bfc\u51fa\u3002",
-        "Consultant / Service pack\uff1a\u767d\u6807\u62a5\u544a\u3001\u591a\u5ba2\u6237 workspace \u548c 5-flow audit\u3002"
+        "Free：基础 Agent Launch Brief 可复制和 Markdown 导出。",
+        "Pro：多 workflow 历史、模板库和顾问版导出。",
+        "Consultant / Service pack：白标报告、多客户 workspace 和 5-flow audit。"
       ],
       "validation": [
-        "\u5df2\u5b9e\u73b0\u672c\u5730\u53ef\u8fd0\u884c MVP \u5e76\u5b8c\u6210\u589e\u91cf\u62a5\u544a\u80fd\u529b\u3002",
-        "\u8986\u76d6 Copy brief\u3001Markdown export\u3001\u5347\u7ea7\u63d0\u793a\u548c\u987e\u95ee\u7248\u62a5\u544a\u6587\u6848\u3002",
-        "\u8986\u76d6\u771f\u5b9e agent use-case seed\u3001\u4f4e/\u4e2d/\u9ad8\u98ce\u9669\u3001\u6743\u9650\u77e9\u9635\u3001localStorage recovery\u3002"
+        "已实现本地可运行 MVP 并完成增量报告能力。",
+        "覆盖 Copy brief、Markdown export、升级提示和顾问版报告文案。",
+        "覆盖真实 agent use-case seed、低/中/高风险、权限矩阵、localStorage recovery。"
       ],
       "stack": [
         "Vite",
