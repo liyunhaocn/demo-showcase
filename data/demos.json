@@ -1,6 +1,45 @@
 {
   "demos": [
     {
+      "id": "agent-trace-console-2026-06-23",
+      "name": "Agent Trace Console",
+      "date": "2026-06-23",
+      "status": "validated",
+      "score": 90,
+      "tagline": "Deterministic trace observability console that maps agent runs to bottlenecks, owner gaps, and replay actions.",
+      "audience": "AI product PMs, engineering leads, QA owners, and operations teams shipping agent workflows",
+      "problem": "Teams need a lightweight way to turn a trace or run summary into an issue matrix, owner checklist, and replay plan before the next incident or release.",
+      "tags": [
+        "Agent Observability",
+        "Tracing",
+        "AI Ops",
+        "Debugging",
+        "Workflow Planning"
+      ],
+      "monetization": [
+        "Free trace brief",
+        "Team observability workflow at $29/mo",
+        "Consultant audit pack at $79/mo"
+      ],
+      "validation": [
+        "Deterministic trace brief and Markdown export verified",
+        "copy fallback and storage-disabled states testable",
+        "responsive at 375px and desktop"
+      ],
+      "stack": [
+        "Static HTML",
+        "CSS",
+        "ES Modules",
+        "localStorage",
+        "Clipboard API"
+      ],
+      "cover": "./assets/agent-trace-console-cover.svg",
+      "links": {
+        "demo": "./demos/agent-trace-console/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase/tree/main/demos/agent-trace-console"
+      }
+    },
+    {
       "id": "workspace-agent-route-planner-2026-06-22",
       "name": "Workspace Agent Route Planner",
       "date": "2026-06-22",

@@ -1,0 +1,49 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Trace Console cover</title>
+  <desc id="desc">Trace console showing a deterministic agent trace route, issue matrix, and replay checklist.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="60" x2="1080" y2="740" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08111f"/>
+      <stop offset="0.52" stop-color="#10233d"/>
+      <stop offset="1" stop-color="#17446b"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="250" y1="160" x2="950" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f172a" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#111f36" stop-opacity="0.82"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="120" y1="220" x2="1040" y2="650" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5dd6ff"/>
+      <stop offset="1" stop-color="#7c9cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="48" fill="url(#bg)"/>
+  <circle cx="198" cy="166" r="86" fill="#5dd6ff" fill-opacity="0.09"/>
+  <circle cx="1010" cy="138" r="122" fill="#7c9cff" fill-opacity="0.08"/>
+  <circle cx="988" cy="642" r="160" fill="#5dd6ff" fill-opacity="0.08"/>
+  <rect x="146" y="120" width="908" height="560" rx="34" fill="url(#panel)" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+  <rect x="182" y="162" width="208" height="22" rx="11" fill="#5dd6ff" fill-opacity="0.78"/>
+  <rect x="182" y="214" width="386" height="18" rx="9" fill="rgba(255,255,255,0.62)"/>
+  <rect x="182" y="246" width="300" height="16" rx="8" fill="rgba(255,255,255,0.28)"/>
+  <g transform="translate(182 306)">
+    <rect x="0" y="0" width="836" height="286" rx="24" fill="#0a1323" fill-opacity="0.88" stroke="rgba(93,214,255,0.24)"/>
+    <rect x="26" y="26" width="128" height="18" rx="9" fill="#5dd6ff" fill-opacity="0.9"/>
+    <rect x="26" y="68" width="236" height="18" rx="9" fill="rgba(255,255,255,0.52)"/>
+    <rect x="26" y="106" width="270" height="14" rx="7" fill="rgba(255,255,255,0.26)"/>
+    <rect x="26" y="146" width="356" height="18" rx="9" fill="#7c9cff" fill-opacity="0.82"/>
+    <rect x="26" y="184" width="296" height="14" rx="7" fill="rgba(255,255,255,0.24)"/>
+    <rect x="460" y="26" width="150" height="18" rx="9" fill="#5dd6ff" fill-opacity="0.45"/>
+    <rect x="460" y="68" width="316" height="18" rx="9" fill="rgba(255,255,255,0.58)"/>
+    <rect x="460" y="106" width="260" height="14" rx="7" fill="rgba(255,255,255,0.26)"/>
+    <rect x="460" y="146" width="218" height="18" rx="9" fill="#7c9cff" fill-opacity="0.38"/>
+    <rect x="460" y="184" width="264" height="14" rx="7" fill="rgba(255,255,255,0.22)"/>
+    <path d="M118 244C178 212 222 212 278 244C336 275 390 275 450 244C510 212 570 212 630 244C692 275 742 275 802 244" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="118" cy="244" r="8" fill="#5dd6ff"/>
+    <circle cx="278" cy="244" r="8" fill="#7c9cff"/>
+    <circle cx="450" cy="244" r="8" fill="#5dd6ff"/>
+    <circle cx="630" cy="244" r="8" fill="#7c9cff"/>
+    <circle cx="802" cy="244" r="8" fill="#5dd6ff"/>
+  </g>
+  <rect x="182" y="624" width="254" height="20" rx="10" fill="rgba(255,255,255,0.58)"/>
+  <rect x="452" y="624" width="188" height="20" rx="10" fill="rgba(255,255,255,0.26)"/>
+  <rect x="656" y="624" width="150" height="20" rx="10" fill="#5dd6ff" fill-opacity="0.5"/>
+</svg>
