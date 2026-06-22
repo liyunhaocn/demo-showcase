@@ -1,6 +1,44 @@
 {
   "demos": [
     {
+      "id": "workspace-agent-route-planner-2026-06-22",
+      "name": "Workspace Agent Route Planner",
+      "date": "2026-06-22",
+      "status": "validated",
+      "score": 88,
+      "tagline": "Route repeatable work to the right agent surface, with rollout order and access checks.",
+      "audience": "AI product leads, engineering managers, and ops owners adopting workspace agents",
+      "problem": "Teams know they want agents, but they do not know which workflows belong on Copilot, workspace agents, Claude, or manual review, or what rollout order to use.",
+      "tags": [
+        "Agent Routing",
+        "Workspace Agents",
+        "AI Ops",
+        "Workflow Planning"
+      ],
+      "monetization": [
+        "Free route brief",
+        "Team rollout pack at $29/mo",
+        "Consultant review pack at $79/mo"
+      ],
+      "validation": [
+        "Deterministic route plan and Markdown export verified",
+        "copy fallback and storage-disabled states testable",
+        "responsive at 375px and desktop"
+      ],
+      "stack": [
+        "Static HTML",
+        "CSS",
+        "ES Modules",
+        "localStorage",
+        "Clipboard API"
+      ],
+      "cover": "./assets/workspace-agent-route-planner-cover.svg",
+      "links": {
+        "demo": "./demos/workspace-agent-route-planner/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase/tree/main/demos/workspace-agent-route-planner"
+      }
+    },
+    {
       "id": "release-note-impact-radar-2026-06-22",
       "name": "Release Note Impact Radar",
       "date": "2026-06-22",
