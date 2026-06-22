@@ -6,9 +6,9 @@
       "date": "2026-06-22",
       "status": "validated",
       "score": 88,
-      "tagline": "Route repeatable work to the right agent surface, with rollout order and access checks.",
+      "tagline": "Deterministic planning demo for routing repeatable work to the right agent surface, with rollout order and access checks.",
       "audience": "AI product leads, engineering managers, and ops owners adopting workspace agents",
-      "problem": "Teams know they want agents, but they do not know which workflows belong on Copilot, workspace agents, Claude, or manual review, or what rollout order to use.",
+      "problem": "Teams know they want agents, but they do not know which workflows belong on Copilot, workspace agents, Claude, or manual review, or what rollout order to use. This demo is deterministic and does not dispatch real agents.",
       "tags": [
         "Agent Routing",
         "Workspace Agents",
