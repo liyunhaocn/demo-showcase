@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCP Gateway Readiness Scanner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="product-name">MCP Gateway Readiness Scanner</span>
+          <div>
+            <h1>AI gateway brief</h1>
+            <p>Map each release note or gateway update to your inventory, then ship the owner checklist before the change reaches customers.</p>
+          </div>
+        </div>
+        <div class="simulation-badge" id="simulation-badge">
+          Demo simulation: deterministic results, no live gateway monitoring.
+        </div>
+      </header>
+
+      <div class="notice-row" id="storage-notice" role="status" aria-live="polite" hidden></div>
+      <div class="restore-banner" id="restore-banner" hidden>
+        <div>
+          <strong>Saved brief found</strong>
+          <span>Restore the last deterministic report from this browser.</span>
+        </div>
+        <button class="secondary-button" type="button" id="restore-button" data-event="restore_last_brief_clicked">Restore last brief</button>
+      </div>
+
+      <main class="workspace">
+        <section class="input-panel" aria-labelledby="form-title">
+          <div class="section-heading">
+            <div>
+              <span class="kicker">Gateway inputs</span>
+              <h2 id="form-title">Run context</h2>
+            </div>
+          </div>
+
+          <div class="preset-strip" aria-label="MCP Gateway Readiness Scanner presets">
+            <button class="preset-button" type="button" data-preset="copilot-agent-gateway" data-event="preset_selected">Try Copilot gateway</button>
+            <button class="preset-button" type="button" data-preset="anthropic-agent-sdk-gateway" data-event="preset_selected">Try Anthropic gateway</button>
+            <button class="preset-button" type="button" data-preset="mcp-observability-flow" data-event="preset_selected">Try MCP gateway</button>
+          </div>
+
+          <form id="brand-form" class="brand-form" novalidate>
+            <label>
+              Application / product
+              <input id="app-name" name="appName" autocomplete="organization" placeholder="Example: MCP Gateway Readiness Scanner" />
+              <span class="field-error" id="app-name-error"></span>
+            </label>
+
+            <label>
+              Gateway source
+              <input id="provider" name="provider" placeholder="OpenAI changelog, Anthropic notes, GitHub changelog" />
+              <span class="field-error" id="provider-error"></span>
+            </label>
+
+            <label>
+              Gateway headline
+              <input id="current-model" name="currentModel" placeholder="GPT-4.5 retirement, Claude Fable 5 launch, Copilot billing update" />
+              <span class="field-error" id="current-model-error"></span>
+            </label>
+
+            <label>
+              Tool surface
+              <input id="workload" name="workload" placeholder="Support replies, workflow agents, billing, code review" />
+              <span class="field-error" id="workload-error"></span>
+            </label>
+
+            <label>
+              Owner group
+              <input id="region" name="region" placeholder="Platform, PM, Ops, QA, Finance" />
+              <span class="field-error" id="region-error"></span>
+            </label>
+
+            <label>
+              Tracked gateways
+              <input id="monthly-requests" name="monthlyRequests" inputmode="numeric" placeholder="6" />
+              <span class="field-error" id="monthly-requests-error"></span>
+            </label>
+
+            <fieldset>
+              <legend>Objective</legend>
+              <div class="objective-control" role="radiogroup" aria-label="Objective">
+                <label>
+                  <input type="radio" name="objective" value="find-bottlenecks" checked />
+                  <span>Find bottlenecks</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="reduce-failures" />
+                  <span>Reduce failures</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="reduce-cost" />
+                  <span>Reduce cost</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label>
+              Server inventory
+              <textarea id="drift-models" name="driftModels" rows="4" placeholder="Gateway item | dependency | owner | risk"></textarea>
+              <span class="field-hint" id="drift-hint">Optional. Extra rows are ignored after the first 6.</span>
+            </label>
+
+            <div class="form-actions">
+              <button class="primary-button" type="submit" data-event="manual_generate_clicked">Generate gateway brief</button>
+              <button class="secondary-button" type="button" id="reset-button" data-event="reset_demo_clicked">Reset demo</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="analysis-panel" aria-labelledby="analysis-title">
+          <div class="section-heading analysis-heading">
+            <div>
+              <span class="kicker">Gateway brief</span>
+              <h2 id="analysis-title">Gateway matrix and owner checklist</h2>
+            </div>
+            <div class="view-toggle" role="radiogroup" aria-label="Report view">
+              <label>
+                <input type="radio" name="report-view" value="founder" checked />
+                <span data-event="founder_view_selected">Founder</span>
+              </label>
+              <label>
+                <input type="radio" name="report-view" value="consultant" />
+                <span data-event="consultant_view_selected">Consultant</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <h3>Run a diagnostic to see tool coverage, critical issues, owner gaps, and this week's action checklist.</h3>
+            <p>Use a preset or enter a gateway source with a server inventory. Results are deterministic demo simulations and do not call live gateway services.</p>
+          </div>
+
+          <div class="report-shell" id="report-shell" hidden>
+            <div class="report-status-row">
+              <span class="simulation-chip">Demo simulation</span>
+              <span id="generated-at"></span>
+            </div>
+
+            <div class="score-grid" id="score-grid"></div>
+            <div class="summary-grid" id="summary-grid"></div>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Gateway questions</span>
+                  <h3>What should the team verify first?</h3>
+                </div>
+              </div>
+              <div class="prompt-list" id="prompt-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Gateway issue matrix</span>
+                  <h3>What is critical, what is a watch item, and what is an opportunity?</h3>
+                </div>
+              </div>
+              <div class="readiness-list" id="readiness-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Action checklist</span>
+                  <h3>Prioritized response actions</h3>
+                </div>
+              </div>
+              <div class="action-list" id="action-list"></div>
+            </section>
+
+            <div class="export-bar">
+              <button class="primary-button" type="button" id="copy-button" data-event="brief_copied">Copy gateway brief</button>
+              <button class="secondary-button" type="button" id="download-button" data-event="markdown_downloaded">Download client-ready report</button>
+              <button class="secondary-button" type="button" id="drift-button">Show Markdown fallback</button>
+            </div>
+
+            <div class="drift-panel" id="drift-panel" hidden>
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Clipboard fallback</span>
+                  <h3>Select and copy manually</h3>
+                </div>
+                <div class="drift-actions">
+                  <button class="secondary-button" type="button" id="select-drift-button">Select all</button>
+                  <button class="secondary-button" type="button" id="close-drift-button">Close</button>
+                </div>
+              </div>
+              <textarea id="drift-markdown" readonly rows="12"></textarea>
+            </div>
+
+            <div class="interest-panel">
+              <strong>Want live gateway tracking later?</strong>
+              <span>This demo records interest locally only. A future product would validate findings with live gateway feeds before business decisions.</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

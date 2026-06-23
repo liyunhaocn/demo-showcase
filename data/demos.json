@@ -1,5 +1,45 @@
 {
   "demos": [
+  {
+    "id": "mcp-gateway-readiness-scanner-2026-06-24",
+      "name": "MCP Gateway Readiness Scanner",
+      "date": "2026-06-24",
+      "status": "validated",
+      "score": 85,
+      "tagline": "Deterministic MCP gateway readiness matrix that maps source changes to owners, risks, and rollout actions.",
+      "audience": "MCP platform leads, PMs, QA owners, and engineering managers",
+      "problem": "Teams adopt MCP gateways and tool surfaces, but they lack a quick way to map source changes to inventory, owners, risks, and the next rollout action.",
+      "tags": [
+        "MCP",
+        "Gateway",
+        "Readiness",
+        "AI Ops",
+        "Release Ops"
+      ],
+    "monetization": [
+      "Free gateway brief",
+      "team workflow at $29/mo",
+      "consultant audit pack at $79/mo"
+    ],
+      "validation": [
+        "Isolated demo implemented and locally runnable",
+        "deterministic gateway brief and Markdown export verified",
+        "copy fallback and storage-disabled states testable",
+        "UI responsive at 375px and desktop"
+      ],
+      "stack": [
+        "Static HTML",
+        "CSS",
+        "ES Modules",
+        "localStorage",
+        "Clipboard API"
+      ],
+      "cover": "./assets/mcp-gateway-readiness-scanner-cover.svg",
+      "links": {
+        "demo": "./demos/mcp-gateway-readiness-scanner/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase/tree/main/demos/mcp-gateway-readiness-scanner"
+      }
+    },
     {
       "id": "agent-trace-console-2026-06-23",
       "name": "Agent Trace Console",
