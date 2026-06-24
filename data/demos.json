@@ -1,7 +1,47 @@
 {
   "demos": [
-  {
-    "id": "mcp-gateway-readiness-scanner-2026-06-24",
+    {
+      "id": "mergepulse-2026-06-25",
+      "name": "MergePulse",
+      "date": "2026-06-24",
+      "status": "validated",
+      "score": 91,
+      "tagline": "Deterministic PR merge readiness radar that turns code changes into a risk matrix, owner map, and merge checklist.",
+      "audience": "PMs, engineering leads, QA owners, and platform teams shipping PRs fast",
+      "problem": "Teams need a quick way to see which pull requests are risky, who owns the risky items, and what checklist to run before merge.",
+      "tags": [
+        "Code Review",
+        "Merge Readiness",
+        "GitHub",
+        "AI Ops",
+        "Release Ops"
+      ],
+      "monetization": [
+        "Free merge brief",
+        "team workflow at $29/mo",
+        "consultant review pack at $79/mo"
+      ],
+      "validation": [
+        "Isolated demo implemented and locally runnable",
+        "deterministic merge brief and Markdown export verified",
+        "copy fallback and storage-disabled states testable",
+        "UI responsive at 375px and desktop"
+      ],
+      "stack": [
+        "Static HTML",
+        "CSS",
+        "ES Modules",
+        "localStorage",
+        "Clipboard API"
+      ],
+      "cover": "./assets/mergepulse-cover.svg",
+      "links": {
+        "demo": "./demos/mergepulse/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase/tree/main/demos/mergepulse"
+      }
+    },
+    {
+      "id": "mcp-gateway-readiness-scanner-2026-06-24",
       "name": "MCP Gateway Readiness Scanner",
       "date": "2026-06-24",
       "status": "validated",
@@ -16,11 +56,11 @@
         "AI Ops",
         "Release Ops"
       ],
-    "monetization": [
-      "Free gateway brief",
-      "team workflow at $29/mo",
-      "consultant audit pack at $79/mo"
-    ],
+      "monetization": [
+        "Free gateway brief",
+        "team workflow at $29/mo",
+        "consultant audit pack at $79/mo"
+      ],
       "validation": [
         "Isolated demo implemented and locally runnable",
         "deterministic gateway brief and Markdown export verified",
