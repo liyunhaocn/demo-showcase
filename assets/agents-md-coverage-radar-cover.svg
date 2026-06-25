@@ -1,0 +1,66 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#08131C"/>
+      <stop offset="0.55" stop-color="#0E2434"/>
+      <stop offset="1" stop-color="#16344A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="72" y1="70" x2="1128" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7EE2B8"/>
+      <stop offset="0.5" stop-color="#74B3FF"/>
+      <stop offset="1" stop-color="#F8D27B"/>
+    </linearGradient>
+    <radialGradient id="radar" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(860 322) rotate(90) scale(174 174)">
+      <stop offset="0" stop-color="#7EE2B8" stop-opacity="0.32"/>
+      <stop offset="0.65" stop-color="#7EE2B8" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#7EE2B8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" rx="32" fill="url(#bg)"/>
+  <rect x="48" y="48" width="1104" height="534" rx="28" fill="rgba(8,19,28,0.72)" stroke="rgba(126,226,184,0.16)"/>
+  <rect x="80" y="82" width="204" height="44" rx="12" fill="rgba(126,226,184,0.14)" stroke="rgba(126,226,184,0.42)"/>
+  <text x="102" y="110" fill="#EAF8F2" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">AGENTS.md Coverage Radar</text>
+
+  <text x="80" y="176" fill="#7EE2B8" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="1.2">DETERMINISTIC STATIC DEMO</text>
+  <text x="80" y="238" fill="#F4FAFF" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800">Instruction coverage scanner</text>
+  <text x="80" y="286" fill="#B8C9D9" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500">Map repository instructions to owners, coverage gaps, and the next action checklist.</text>
+
+  <g transform="translate(744 164)">
+    <circle cx="116" cy="116" r="112" fill="url(#radar)" stroke="rgba(126,226,184,0.34)" stroke-width="2"/>
+    <circle cx="116" cy="116" r="80" fill="none" stroke="rgba(126,226,184,0.22)" stroke-width="2"/>
+    <circle cx="116" cy="116" r="48" fill="none" stroke="rgba(126,226,184,0.18)" stroke-width="2"/>
+    <circle cx="116" cy="116" r="16" fill="#7EE2B8"/>
+    <path d="M116 14L116 218" stroke="rgba(126,226,184,0.26)" stroke-width="2"/>
+    <path d="M14 116L218 116" stroke="rgba(126,226,184,0.26)" stroke-width="2"/>
+    <path d="M40 40L192 192" stroke="rgba(126,226,184,0.12)" stroke-width="2"/>
+    <path d="M192 40L40 192" stroke="rgba(126,226,184,0.12)" stroke-width="2"/>
+    <path d="M116 116L188 78" stroke="#F8D27B" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="188" cy="78" r="8" fill="#F8D27B"/>
+    <circle cx="76" cy="148" r="7" fill="#74B3FF"/>
+    <circle cx="154" cy="186" r="6" fill="#7EE2B8"/>
+  </g>
+
+  <rect x="80" y="352" width="316" height="150" rx="20" fill="rgba(126,226,184,0.08)" stroke="rgba(126,226,184,0.28)"/>
+  <text x="106" y="392" fill="#F4FAFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Readiness score</text>
+  <text x="106" y="452" fill="#7EE2B8" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="800">84</text>
+  <text x="188" y="447" fill="#B8C9D9" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600">/ 100</text>
+  <rect x="106" y="478" width="260" height="12" rx="6" fill="rgba(255,255,255,0.12)"/>
+  <rect x="106" y="478" width="210" height="12" rx="6" fill="url(#accent)"/>
+
+  <rect x="420" y="352" width="312" height="150" rx="20" fill="rgba(118,165,255,0.08)" stroke="rgba(118,165,255,0.22)"/>
+  <text x="446" y="392" fill="#F4FAFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Risk matrix</text>
+  <rect x="446" y="414" width="116" height="32" rx="10" fill="rgba(248,210,123,0.18)"/>
+  <text x="471" y="435" fill="#F8D27B" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700">critical</text>
+  <rect x="578" y="414" width="92" height="32" rx="10" fill="rgba(126,226,184,0.18)"/>
+  <text x="599" y="435" fill="#7EE2B8" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700">watch</text>
+  <text x="446" y="468" fill="#B8C9D9" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="500">Owners, coverage gaps, and next actions in one brief.</text>
+
+  <rect x="756" y="352" width="364" height="150" rx="20" fill="rgba(20,37,52,0.72)" stroke="rgba(126,226,184,0.24)"/>
+  <text x="782" y="392" fill="#F4FAFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Action checklist</text>
+  <circle cx="792" cy="426" r="7" fill="#7EE2B8"/>
+  <circle cx="792" cy="456" r="7" fill="#74B3FF"/>
+  <circle cx="792" cy="486" r="7" fill="#F8D27B"/>
+  <text x="812" y="432" fill="#F4FAFF" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600">Map the instruction source</text>
+  <text x="812" y="462" fill="#F4FAFF" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600">Assign owners to coverage rows</text>
+  <text x="812" y="492" fill="#F4FAFF" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600">Publish the coverage brief</text>
+</svg>

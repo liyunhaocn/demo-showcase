@@ -1,6 +1,46 @@
 {
   "demos": [
     {
+      "id": "agents-md-coverage-radar-2026-06-25",
+      "name": "AGENTS.md Coverage Radar",
+      "date": "2026-06-25",
+      "status": "validated",
+      "score": 90,
+      "tagline": "Deterministic instruction coverage scanner that maps repo signals to owners, coverage gaps, and the next action checklist.",
+      "audience": "AI product PMs, engineering leads, QA owners, and platform teams shipping agent workflows",
+      "problem": "Teams have instruction sources, coverage inventories, owners, and rollout risk, but they lack a quick way to turn them into a readable coverage matrix and action brief before the next change.",
+      "tags": [
+        "AGENTS.md",
+        "Instruction Coverage",
+        "Code Review",
+        "AI Ops",
+        "Release Ops"
+      ],
+      "monetization": [
+        "Free coverage brief",
+        "team workflow at $29/mo",
+        "consultant audit pack at $79/mo"
+      ],
+      "validation": [
+        "Built and smoke-tested locally",
+        "deterministic coverage brief and Markdown export verified",
+        "copy fallback and storage-disabled states testable",
+        "desktop and 375px mobile no overflow"
+      ],
+      "stack": [
+        "Static HTML",
+        "CSS",
+        "ES Modules",
+        "localStorage",
+        "Clipboard API"
+      ],
+      "cover": "./assets/agents-md-coverage-radar-cover.svg",
+      "links": {
+        "demo": "./demos/agents-md-coverage-radar/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase/tree/main/demos/agents-md-coverage-radar"
+      }
+    },
+    {
       "id": "mergepulse-2026-06-25",
       "name": "MergePulse",
       "date": "2026-06-24",

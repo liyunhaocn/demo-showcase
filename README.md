@@ -2,7 +2,7 @@
 
 Daily Demo Shelf 是一个纯静态展示平台，用来收录每天生成的创业 Demo。每个 Demo 都包含产品截图、价值主张、目标用户、痛点、盈利路径、验证记录、技术栈和演示/代码链接。
 
-当前 Demo 包括 `AgentGate`、`Agent Trace Console`、`AnswerRank`、`CopilotBurn`、`MergePulse`、`MCP Gateway Readiness Scanner`、`ModelShift`、`Prompt Drift Lab`、`Release Note Impact Radar` 和 `Workspace Agent Route Planner`，都已内置在 `demos/<demo-id>/`，部署到 Pages 后可以直接从展示站打开演示。
+当前 Demo 包括 `AGENTS.md Coverage Radar`、`AgentGate`、`Agent Trace Console`、`AnswerRank`、`CopilotBurn`、`MergePulse`、`MCP Gateway Readiness Scanner`、`ModelShift`、`Prompt Drift Lab`、`Release Note Impact Radar` 和 `Workspace Agent Route Planner`，都已内置在 `demos/<demo-id>/`，部署到 Pages 后可以直接从展示站打开演示。
 
 ## 本地运行
 
