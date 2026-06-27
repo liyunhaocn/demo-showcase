@@ -1,6 +1,43 @@
 {
   "demos": [
     {
+      "id": "context-split-planner-2026-06-28",
+      "name": "Context Split Planner",
+      "date": "2026-06-28",
+      "status": "validated",
+      "score": 91,
+      "tagline": "Deterministic planner that decides when to split a long AI coding task into a fresh session, a subagent, or a human handoff.",
+      "audience": "PMs, leads, and AI coding teams splitting big tasks across sessions",
+      "problem": "Long agent sessions lose context and handoff discipline, so teams need a deterministic split plan before the work drifts.",
+      "tags": [
+        "AI",
+        "Agents",
+        "Workflow",
+        "Planning",
+        "DeveloperTools"
+      ],
+  "monetization": [
+    "Free planning brief",
+    "team workflow at $29/mo",
+    "consultant audit pack at $79/mo"
+  ],
+      "validation": [
+        "validate/build passed",
+        "desktop/mobile browser smoke passed",
+        "copy fallback and storage-off verified"
+      ],
+      "stack": [
+        "Static Frontend",
+        "Deterministic Simulation",
+        "Markdown Export"
+      ],
+      "cover": "./assets/context-split-planner-cover.svg",
+      "links": {
+        "demo": "./demos/context-split-planner/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase"
+      }
+    },
+    {
       "id": "agents-md-coverage-radar-2026-06-25",
       "name": "AGENTS.md Coverage Radar",
       "date": "2026-06-25",

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Context Split Planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="product-name">Context Split Planner</span>
+          <div>
+            <h1>AI split plan</h1>
+            <p>Map each run to your context inventory, then ship the handoff checklist before the change reaches customers.</p>
+          </div>
+        </div>
+        <div class="simulation-badge" id="simulation-badge">
+          Demo simulation: deterministic results, no live split monitoring.
+        </div>
+      </header>
+
+      <div class="notice-row" id="storage-notice" role="status" aria-live="polite" hidden></div>
+      <div class="restore-banner" id="restore-banner" hidden>
+        <div>
+          <strong>Saved brief found</strong>
+          <span>Restore the last deterministic report from this browser.</span>
+        </div>
+        <button class="secondary-button" type="button" id="restore-button" data-event="restore_last_brief_clicked">Restore last brief</button>
+      </div>
+
+      <main class="workspace">
+        <section class="input-panel" aria-labelledby="form-title">
+          <div class="section-heading">
+            <div>
+              <span class="kicker">Split inputs</span>
+              <h2 id="form-title">Run context</h2>
+            </div>
+          </div>
+
+          <div class="preset-strip" aria-label="Context Split Planner presets">
+            <button class="preset-button" type="button" data-preset="large-refactor-split" data-event="preset_selected">Try large refactor</button>
+            <button class="preset-button" type="button" data-preset="incident-rescue-split" data-event="preset_selected">Try incident rescue</button>
+            <button class="preset-button" type="button" data-preset="greenfield-kickoff-split" data-event="preset_selected">Try kickoff split</button>
+          </div>
+
+          <form id="brand-form" class="brand-form" novalidate>
+            <label>
+              Task / project
+              <input id="app-name" name="appName" autocomplete="organization" placeholder="Example: Context Split Planner" />
+              <span class="field-error" id="app-name-error"></span>
+            </label>
+
+            <label>
+              Context source
+              <input id="provider" name="provider" placeholder="OpenAI changelog, Anthropic notes, GitHub changelog" />
+              <span class="field-error" id="provider-error"></span>
+            </label>
+
+            <label>
+              Session headline
+              <input id="current-model" name="currentModel" placeholder="Large refactor, incident rescue, kickoff with many constraints" />
+              <span class="field-error" id="current-model-error"></span>
+            </label>
+
+            <label>
+              Surface
+              <input id="workload" name="workload" placeholder="Checkout repo, incident thread, new product build" />
+              <span class="field-error" id="workload-error"></span>
+            </label>
+
+            <label>
+              Owning team
+              <input id="region" name="region" placeholder="Platform team, ops team, founding team" />
+              <span class="field-error" id="region-error"></span>
+            </label>
+
+            <label>
+              Context chunks
+              <input id="monthly-requests" name="monthlyRequests" inputmode="numeric" placeholder="6" />
+              <span class="field-error" id="monthly-requests-error"></span>
+            </label>
+
+            <fieldset>
+              <legend>Objective</legend>
+              <div class="objective-control" role="radiogroup" aria-label="Objective">
+                <label>
+                  <input type="radio" name="objective" value="split-large-task" checked />
+                  <span>Split large task</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="reduce-context-risk" />
+                  <span>Reduce context risk</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="reduce-handoff-friction" />
+                  <span>Reduce handoff friction</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label>
+              Context inventory
+              <textarea id="review-models" name="reviewModels" rows="4" placeholder="Split item | dependency | owner | risk"></textarea>
+              <span class="field-hint" id="review-hint">Optional. Extra rows are ignored after the first 6.</span>
+            </label>
+
+            <div class="form-actions">
+              <button class="primary-button" type="submit" data-event="manual_generate_clicked">Generate split plan</button>
+              <button class="secondary-button" type="button" id="reset-button" data-event="reset_demo_clicked">Reset demo</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="analysis-panel" aria-labelledby="analysis-title">
+          <div class="section-heading analysis-heading">
+            <div>
+              <span class="kicker">Split plan</span>
+              <h2 id="analysis-title">Context split matrix and owner checklist</h2>
+            </div>
+            <div class="view-toggle" role="radiogroup" aria-label="Report view">
+              <label>
+                <input type="radio" name="report-view" value="founder" checked />
+                <span data-event="founder_view_selected">Founder</span>
+              </label>
+              <label>
+                <input type="radio" name="report-view" value="consultant" />
+                <span data-event="consultant_view_selected">Consultant</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <h3>Run a diagnostic to see split gaps, critical rows, owner gaps, and this week's action checklist.</h3>
+            <p>Use a preset or enter a context source with a context inventory. Results are deterministic demo simulations and do not call live split services.</p>
+          </div>
+
+          <div class="report-shell" id="report-shell" hidden>
+            <div class="report-status-row">
+              <span class="simulation-chip">Demo simulation</span>
+              <span id="generated-at"></span>
+            </div>
+
+            <div class="score-grid" id="score-grid"></div>
+            <div class="summary-grid" id="summary-grid"></div>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Split questions</span>
+                  <h3>What should the team verify first?</h3>
+                </div>
+              </div>
+              <div class="prompt-list" id="prompt-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Context split matrix</span>
+                  <h3>What is critical, what is a watch item, and what is an opportunity?</h3>
+                </div>
+              </div>
+              <div class="readiness-list" id="readiness-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Action checklist</span>
+                  <h3>Prioritized response actions</h3>
+                </div>
+              </div>
+              <div class="action-list" id="action-list"></div>
+            </section>
+
+            <div class="export-bar">
+              <button class="primary-button" type="button" id="copy-button" data-event="brief_copied">Copy split plan</button>
+              <button class="secondary-button" type="button" id="download-button" data-event="markdown_downloaded">Download client-ready report</button>
+              <button class="secondary-button" type="button" id="review-button">Show Markdown fallback</button>
+            </div>
+
+            <div class="review-panel" id="review-panel" hidden>
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Clipboard fallback</span>
+                  <h3>Select and copy manually</h3>
+                </div>
+                <div class="review-actions">
+                  <button class="secondary-button" type="button" id="select-review-button">Select all</button>
+                  <button class="secondary-button" type="button" id="close-review-button">Close</button>
+                </div>
+              </div>
+              <textarea id="review-markdown" readonly rows="12"></textarea>
+            </div>
+
+            <div class="interest-panel">
+              <strong>Want live split tracking later?</strong>
+              <span>This demo records interest locally only. A future product would validate findings with live context feeds before business decisions.</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

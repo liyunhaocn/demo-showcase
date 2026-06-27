@@ -1,0 +1,29 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Context Split Planner cover</title>
+  <desc id="desc">A clean cover card showing session split paths, context chunks, and handoff planning.</desc>
+  <rect width="1200" height="720" rx="48" fill="#08141A"/>
+  <rect x="48" y="48" width="1104" height="624" rx="36" fill="url(#paint0_linear)" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="242" cy="216" r="72" fill="#1B7C5B"/>
+  <circle cx="242" cy="216" r="40" fill="#0B2430"/>
+  <path d="M214 215c36-24 52-24 76 0" stroke="#F5FBF8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M221 235c28 12 45 12 62 0" stroke="#F5FBF8" stroke-width="8" stroke-linecap="round" opacity="0.75"/>
+  <path d="M242 144v-30" stroke="#7AD4B4" stroke-width="8" stroke-linecap="round"/>
+  <path d="M242 318v-30" stroke="#7AD4B4" stroke-width="8" stroke-linecap="round"/>
+  <path d="M330 216h150" stroke="#6EE7B7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M330 216l28-26" stroke="#6EE7B7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M330 216l28 26" stroke="#6EE7B7" stroke-width="10" stroke-linecap="round"/>
+  <rect x="560" y="146" width="448" height="88" rx="20" fill="rgba(255,255,255,0.08)"/>
+  <rect x="560" y="252" width="320" height="64" rx="16" fill="rgba(255,255,255,0.06)"/>
+  <rect x="560" y="332" width="380" height="64" rx="16" fill="rgba(255,255,255,0.06)"/>
+  <rect x="560" y="412" width="290" height="64" rx="16" fill="rgba(255,255,255,0.06)"/>
+  <text x="600" y="204" fill="#F4FBF7" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">Context Split Planner</text>
+  <text x="600" y="292" fill="#D7E8E1" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">Session split matrix</text>
+  <text x="600" y="372" fill="#D7E8E1" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">Handoff checklist</text>
+  <text x="600" y="452" fill="#D7E8E1" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">Owner map</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="48" y1="48" x2="1152" y2="672" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D2230"/>
+      <stop offset="1" stop-color="#132F24"/>
+    </linearGradient>
+  </defs>
+</svg>
