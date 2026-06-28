@@ -1,6 +1,44 @@
 {
   "demos": [
     {
+      "id": "actions-parallelism-planner-2026-06-28",
+      "name": "Actions Parallelism Planner",
+      "date": "2026-06-28",
+      "status": "validated",
+      "score": 89,
+      "tagline": "Deterministic planner that decides which GitHub Actions steps can run in parallel, which must stay serial, and where to add wait or cancel gates.",
+      "audience": "Engineering managers, platform leads, and release owners shipping GitHub Actions workflows",
+      "problem": "GitHub Actions steps can now run in parallel, but teams still need a deterministic way to decide what is safe to background, what must stay serial, and where owner handoff or cancel paths are required.",
+      "tags": [
+        "AI",
+        "GitHub Actions",
+        "Workflow",
+        "DeveloperTools",
+        "Planning"
+      ],
+      "monetization": [
+        "Workflow review brief package",
+        "team enablement pack",
+        "release-owner checklist pack"
+      ],
+      "validation": [
+        "validate/build passed",
+        "desktop browser smoke passed",
+        "375px mobile browser smoke passed",
+        "copy fallback and storage-off verified"
+      ],
+      "stack": [
+        "Static Frontend",
+        "Deterministic Simulation",
+        "Markdown Export"
+      ],
+      "cover": "./assets/actions-parallelism-planner-cover.svg",
+      "links": {
+        "demo": "./demos/actions-parallelism-planner/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase"
+      }
+    },
+    {
       "id": "context-split-planner-2026-06-28",
       "name": "Context Split Planner",
       "date": "2026-06-28",
@@ -16,11 +54,11 @@
         "Planning",
         "DeveloperTools"
       ],
-  "monetization": [
-    "Free planning brief",
-    "team workflow at $29/mo",
-    "consultant audit pack at $79/mo"
-  ],
+      "monetization": [
+        "Free planning brief",
+        "team workflow at $29/mo",
+        "consultant audit pack at $79/mo"
+      ],
       "validation": [
         "validate/build passed",
         "desktop/mobile browser smoke passed",
