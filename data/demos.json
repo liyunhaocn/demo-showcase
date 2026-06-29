@@ -1,6 +1,44 @@
 {
   "demos": [
     {
+      "id": "issue-triage-field-planner-2026-06-30",
+      "name": "Issue Triage Field Planner",
+      "date": "2026-06-30",
+      "status": "validated",
+      "score": 88,
+      "tagline": "Deterministic planner that turns GitHub issue signals into duplicate clusters, owner gates, saved-view fit, and an action checklist.",
+      "audience": "Engineering managers, release owners, QA owners, and platform leads managing noisy GitHub issue queues",
+      "problem": "Issue risk is scattered across duplicates, missing owners, field gaps, and saved views, so teams need a deterministic triage brief before backlog noise grows.",
+      "tags": [
+        "AI",
+        "GitHub Issues",
+        "Workflow",
+        "Planning",
+        "DeveloperTools"
+      ],
+      "monetization": [
+        "triage review brief package",
+        "team enablement pack",
+        "release-owner checklist pack"
+      ],
+      "validation": [
+        "validate/build passed",
+        "desktop browser smoke passed",
+        "375px mobile browser smoke passed",
+        "copy fallback and storage-off verified"
+      ],
+      "stack": [
+        "Static Frontend",
+        "Deterministic Simulation",
+        "Markdown Export"
+      ],
+      "cover": "./assets/issue-triage-field-planner-cover.svg",
+      "links": {
+        "demo": "./demos/issue-triage-field-planner/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase"
+      }
+    },
+    {
       "id": "actions-parallelism-planner-2026-06-28",
       "name": "Actions Parallelism Planner",
       "date": "2026-06-28",

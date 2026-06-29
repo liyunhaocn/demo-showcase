@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Issue Triage Field Planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="product-name">Issue Triage Field Planner</span>
+          <div>
+            <h1>GitHub issue triage plan</h1>
+            <p>Map duplicate clusters, missing owners, and saved-view gaps into one deterministic triage brief before the backlog gets noisier.</p>
+          </div>
+        </div>
+        <div class="simulation-badge" id="simulation-badge">
+          Demo simulation: deterministic issue triage planning, no live GitHub API calls.
+        </div>
+      </header>
+
+      <div class="notice-row" id="storage-notice" role="status" aria-live="polite" hidden></div>
+      <div class="restore-banner" id="restore-banner" hidden>
+        <div>
+          <strong>Saved brief found</strong>
+          <span>Restore the last deterministic triage report from this browser.</span>
+        </div>
+        <button class="secondary-button" type="button" id="restore-button" data-event="restore_last_brief_clicked">Restore last brief</button>
+      </div>
+
+      <main class="workspace">
+        <section class="input-panel" aria-labelledby="form-title">
+          <div class="section-heading">
+            <div>
+              <span class="kicker">Issue inputs</span>
+              <h2 id="form-title">Run triage</h2>
+            </div>
+          </div>
+
+          <div class="preset-strip" aria-label="Issue Triage Field Planner presets">
+            <button class="preset-button" type="button" data-preset="bug-burst-dedupe" data-event="preset_selected">Try bug burst</button>
+            <button class="preset-button" type="button" data-preset="release-triage-queue" data-event="preset_selected">Try release queue</button>
+            <button class="preset-button" type="button" data-preset="saved-view-repair" data-event="preset_selected">Try view repair</button>
+          </div>
+
+          <form id="brand-form" class="brand-form" novalidate>
+            <label>
+              Queue name
+              <input id="app-name" name="appName" autocomplete="organization" placeholder="Example: Public bug queue" />
+              <span class="field-error" id="app-name-error"></span>
+            </label>
+
+            <label>
+              GitHub Issues source
+              <input id="provider" name="provider" placeholder="GitHub Issues fields, MCP fields, saved views" />
+              <span class="field-error" id="provider-error"></span>
+            </label>
+
+            <label>
+              Triage goal
+              <input id="current-model" name="currentModel" placeholder="Collapse duplicates, assign owners, and normalize fields" />
+              <span class="field-error" id="current-model-error"></span>
+            </label>
+
+            <label>
+              Repo / queue
+              <input id="workload" name="workload" placeholder="customer bug intake, release queue, issue backlog" />
+              <span class="field-error" id="workload-error"></span>
+            </label>
+
+            <label>
+              Owning team
+              <input id="region" name="region" placeholder="support and product team, release engineering, platform" />
+              <span class="field-error" id="region-error"></span>
+            </label>
+
+            <label>
+              Issue count
+              <input id="monthly-requests" name="monthlyRequests" inputmode="numeric" placeholder="6" />
+              <span class="field-error" id="monthly-requests-error"></span>
+            </label>
+
+            <fieldset>
+              <legend>Objective</legend>
+              <div class="objective-control" role="radiogroup" aria-label="Objective">
+                <label>
+                  <input type="radio" name="objective" value="reduce-duplicate-load" checked />
+                  <span>Reduce duplicate load</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="release-readiness" />
+                  <span>Release readiness</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="field-coverage" />
+                  <span>Field coverage</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label>
+              Issue inventory
+              <textarea id="review-models" name="reviewModels" rows="4" placeholder="Issue | dependency | owner | risk"></textarea>
+              <span class="field-hint" id="review-hint">Optional. Extra rows are ignored after the first 6 issue rows.</span>
+            </label>
+
+            <div class="form-actions">
+              <button class="primary-button" type="submit" data-event="manual_generate_clicked">Generate triage plan</button>
+              <button class="secondary-button" type="button" id="reset-button" data-event="reset_demo_clicked">Reset demo</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="analysis-panel" aria-labelledby="analysis-title">
+          <div class="section-heading analysis-heading">
+            <div>
+              <span class="kicker">Triage plan</span>
+              <h2 id="analysis-title">Duplicate matrix and owner checklist</h2>
+            </div>
+            <div class="view-toggle" role="radiogroup" aria-label="Report view">
+              <label>
+                <input type="radio" name="report-view" value="founder" checked />
+                <span data-event="founder_view_selected">Triage lead</span>
+              </label>
+              <label>
+                <input type="radio" name="report-view" value="consultant" />
+                <span data-event="consultant_view_selected">Platform engineer</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <h3>Run a diagnostic to see duplicate clusters, missing owners, field gaps, and the issue checklist.</h3>
+            <p>Use a preset or enter a GitHub Issues source with an issue inventory. Results are deterministic demo simulations and do not call live GitHub services.</p>
+          </div>
+
+          <div class="report-shell" id="report-shell" hidden>
+            <div class="report-status-row">
+              <span class="simulation-chip">Demo simulation</span>
+              <span id="generated-at"></span>
+            </div>
+
+            <div class="score-grid" id="score-grid"></div>
+            <div class="summary-grid" id="summary-grid"></div>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Triage questions</span>
+                  <h3>What should the team verify first?</h3>
+                </div>
+              </div>
+              <div class="prompt-list" id="prompt-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Duplicate matrix</span>
+                  <h3>What stays blocked, what needs owner follow-up, and what can route cleanly?</h3>
+                </div>
+              </div>
+              <div class="readiness-list" id="readiness-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Execution checklist</span>
+                  <h3>Prioritized response actions</h3>
+                </div>
+              </div>
+              <div class="action-list" id="action-list"></div>
+            </section>
+
+            <div class="export-bar">
+              <button class="primary-button" type="button" id="copy-button" data-event="brief_copied">Copy triage plan</button>
+              <button class="secondary-button" type="button" id="download-button" data-event="markdown_downloaded">Download client-ready report</button>
+              <button class="secondary-button" type="button" id="review-button">Show Markdown fallback</button>
+            </div>
+
+            <div class="review-panel" id="review-panel" hidden>
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Clipboard fallback</span>
+                  <h3>Select and copy manually</h3>
+                </div>
+                <div class="review-actions">
+                  <button class="secondary-button" type="button" id="select-review-button">Select all</button>
+                  <button class="secondary-button" type="button" id="close-review-button">Close</button>
+                </div>
+              </div>
+              <textarea id="review-markdown" readonly rows="12"></textarea>
+            </div>
+
+            <div class="interest-panel">
+              <strong>Want live issue import later?</strong>
+              <span>This demo records interest locally only. A future product would validate findings with live GitHub issue signals before automation decisions.</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
