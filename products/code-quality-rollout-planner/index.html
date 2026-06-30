@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Quality Rollout Planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="product-name">Code Quality Rollout Planner</span>
+          <div>
+            <h1>GitHub Code Quality rollout plan</h1>
+            <p>Map pilot coverage, owner gates, budget caps, and policy checks into one deterministic rollout brief before the pricing change lands.</p>
+          </div>
+        </div>
+        <div class="simulation-badge" id="simulation-badge">
+          Demo simulation: deterministic GitHub Code Quality rollout planning, no live API calls.
+        </div>
+      </header>
+
+      <div class="notice-row" id="storage-notice" role="status" aria-live="polite" hidden></div>
+      <div class="restore-banner" id="restore-banner" hidden>
+        <div>
+          <strong>Saved brief found</strong>
+          <span>Restore the last deterministic rollout report from this browser.</span>
+        </div>
+        <button class="secondary-button" type="button" id="restore-button" data-event="restore_last_brief_clicked">Restore last brief</button>
+      </div>
+
+      <main class="workspace">
+        <section class="input-panel" aria-labelledby="form-title">
+          <div class="section-heading">
+            <div>
+              <span class="kicker">Rollout inputs</span>
+              <h2 id="form-title">Plan rollout</h2>
+            </div>
+          </div>
+
+          <div class="preset-strip" aria-label="Code Quality Rollout Planner presets">
+            <button class="preset-button" type="button" data-preset="pilot-rollout" data-event="preset_selected">Try pilot rollout</button>
+            <button class="preset-button" type="button" data-preset="budget-guard" data-event="preset_selected">Try budget guard</button>
+            <button class="preset-button" type="button" data-preset="policy-ready" data-event="preset_selected">Try policy ready</button>
+          </div>
+
+          <form id="brand-form" class="brand-form" novalidate>
+            <label>
+              Rollout name
+              <input id="app-name" name="appName" autocomplete="organization" placeholder="Example: Platform rollout" />
+              <span class="field-error" id="app-name-error"></span>
+            </label>
+
+            <label>
+              Code Quality source
+              <input id="provider" name="provider" placeholder="GitHub Code Quality GA, Copilot review controls" />
+              <span class="field-error" id="provider-error"></span>
+            </label>
+
+            <label>
+              Rollout goal
+              <input id="current-model" name="currentModel" placeholder="Enable code quality on repos with owner and review coverage" />
+              <span class="field-error" id="current-model-error"></span>
+            </label>
+
+            <label>
+              Repo fleet
+              <input id="workload" name="workload" placeholder="platform repos, billing repos, support repos" />
+              <span class="field-error" id="workload-error"></span>
+            </label>
+
+            <label>
+              Owning team
+              <input id="region" name="region" placeholder="platform and engineering, security, devex" />
+              <span class="field-error" id="region-error"></span>
+            </label>
+
+            <label>
+              Active committer count
+              <input id="monthly-requests" name="monthlyRequests" inputmode="numeric" placeholder="6" />
+              <span class="field-error" id="monthly-requests-error"></span>
+            </label>
+
+            <fieldset>
+              <legend>Objective</legend>
+              <div class="objective-control" role="radiogroup" aria-label="Objective">
+                <label>
+                  <input type="radio" name="objective" value="reduce-rollout-risk" checked />
+                  <span>Reduce rollout risk</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="control-budget" />
+                  <span>Control budget</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="policy-ready" />
+                  <span>Policy ready</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label>
+              Repo inventory
+              <textarea id="review-models" name="reviewModels" rows="4" placeholder="Repo | gate | owner | risk"></textarea>
+              <span class="field-hint" id="review-hint">Optional. Extra rows are ignored after the first 6 repo rows.</span>
+            </label>
+
+            <div class="form-actions">
+              <button class="primary-button" type="submit" data-event="manual_generate_clicked">Generate rollout plan</button>
+              <button class="secondary-button" type="button" id="reset-button" data-event="reset_demo_clicked">Reset demo</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="analysis-panel" aria-labelledby="analysis-title">
+          <div class="section-heading analysis-heading">
+            <div>
+              <span class="kicker">Rollout plan</span>
+              <h2 id="analysis-title">Rollout matrix and owner checklist</h2>
+            </div>
+            <div class="view-toggle" role="radiogroup" aria-label="Report view">
+              <label>
+                <input type="radio" name="report-view" value="founder" checked />
+                <span data-event="founder_view_selected">Rollout lead</span>
+              </label>
+              <label>
+                <input type="radio" name="report-view" value="consultant" />
+                <span data-event="consultant_view_selected">Platform engineer</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <h3>Run a diagnostic to see pilot coverage, owner gates, budget caps, policy gates, and the rollout checklist.</h3>
+            <p>Use a preset or enter a Code Quality source with a repo inventory. Results are deterministic demo simulations and do not call live GitHub services.</p>
+          </div>
+
+          <div class="report-shell" id="report-shell" hidden>
+            <div class="report-status-row">
+              <span class="simulation-chip">Demo simulation</span>
+              <span id="generated-at"></span>
+            </div>
+
+            <div class="score-grid" id="score-grid"></div>
+            <div class="summary-grid" id="summary-grid"></div>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Rollout questions</span>
+                  <h3>What should the team verify first?</h3>
+                </div>
+              </div>
+              <div class="prompt-list" id="prompt-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Rollout matrix</span>
+                  <h3>What stays blocked, what needs owner follow-up, and what can route cleanly?</h3>
+                </div>
+              </div>
+              <div class="readiness-list" id="readiness-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Execution checklist</span>
+                  <h3>Prioritized rollout actions</h3>
+                </div>
+              </div>
+              <div class="action-list" id="action-list"></div>
+            </section>
+
+            <div class="export-bar">
+              <button class="primary-button" type="button" id="copy-button" data-event="brief_copied">Copy rollout plan</button>
+              <button class="secondary-button" type="button" id="download-button" data-event="markdown_downloaded">Download client-ready report</button>
+              <button class="secondary-button" type="button" id="review-button">Show Markdown fallback</button>
+            </div>
+
+            <div class="review-panel" id="review-panel" hidden>
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Clipboard fallback</span>
+                  <h3>Select and copy manually</h3>
+                </div>
+                <div class="review-actions">
+                  <button class="secondary-button" type="button" id="select-review-button">Select all</button>
+                  <button class="secondary-button" type="button" id="close-review-button">Close</button>
+                </div>
+              </div>
+              <textarea id="review-markdown" readonly rows="12"></textarea>
+            </div>
+
+            <div class="interest-panel">
+              <strong>Want live Code Quality import later?</strong>
+              <span>This demo records interest locally only. A future product would validate findings with live GitHub Code Quality data before automation decisions.</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

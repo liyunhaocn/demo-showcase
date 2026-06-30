@@ -1,6 +1,44 @@
 {
   "demos": [
     {
+      "id": "code-quality-rollout-planner-2026-07-01",
+      "name": "Code Quality Rollout Planner",
+      "date": "2026-07-01",
+      "status": "validated",
+      "score": 90,
+      "tagline": "Deterministic planner that turns GitHub Code Quality signals into pilot coverage, owner gates, budget caps, policy gates, and an execution checklist.",
+      "audience": "Engineering managers, DevOps leads, platform engineers, and release owners rolling out GitHub Code Quality",
+      "problem": "Code quality adoption is gated by owners, budget caps, policy rules, and rollout views, so teams need a deterministic brief before enabling more repos.",
+      "tags": [
+        "AI",
+        "GitHub Code Quality",
+        "Workflow",
+        "DeveloperTools",
+        "Planning"
+      ],
+      "monetization": [
+        "rollout review brief package",
+        "team enablement pack",
+        "platform rollout checklist pack"
+      ],
+      "validation": [
+        "validate/build passed",
+        "desktop browser smoke passed",
+        "375px mobile browser smoke passed",
+        "copy fallback and storage-off verified"
+      ],
+      "stack": [
+        "Static Frontend",
+        "Deterministic Simulation",
+        "Markdown Export"
+      ],
+      "cover": "./assets/code-quality-rollout-planner-cover.svg",
+      "links": {
+        "demo": "./demos/code-quality-rollout-planner/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase"
+      }
+    },
+    {
       "id": "issue-triage-field-planner-2026-06-30",
       "name": "Issue Triage Field Planner",
       "date": "2026-06-30",
