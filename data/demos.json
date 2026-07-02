@@ -1,6 +1,44 @@
 {
   "demos": [
     {
+      "id": "browser-tool-safety-planner-2026-07-03",
+      "name": "Browser Tool Safety Planner",
+      "date": "2026-07-03",
+      "status": "validated",
+      "score": 90,
+      "tagline": "Deterministic planner that turns browser task inventory into safety gates, owner checks, and a rollout brief before browser access widens.",
+      "audience": "Engineering managers, platform leads, browser automation owners, and security reviewers deciding which browser tasks are safe to enable.",
+      "problem": "Browser automation can fail on owner gaps, policy issues, budget spikes, or risky setup paths, so teams need a deterministic safety brief before enabling browser tools.",
+      "tags": [
+        "AI",
+        "Browser",
+        "Security",
+        "Workflow",
+        "DeveloperTools"
+      ],
+      "monetization": [
+        "safety review brief package",
+        "platform enablement pack",
+        "browser policy checklist pack"
+      ],
+      "validation": [
+        "validate/build passed",
+        "desktop browser smoke passed",
+        "375px mobile browser smoke passed",
+        "copy fallback and storage-off verified"
+      ],
+      "stack": [
+        "Static Frontend",
+        "Deterministic Simulation",
+        "Markdown Export"
+      ],
+      "cover": "./assets/browser-tool-safety-planner-cover.svg",
+      "links": {
+        "demo": "./demos/browser-tool-safety-planner/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase"
+      }
+    },
+    {
       "id": "agent-repo-trust-scanner-2026-07-02",
       "name": "Agent Repo Trust Scanner",
       "date": "2026-07-02",
