@@ -1,0 +1,55 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Repo Trust Scanner</title>
+  <desc id="desc">Dark blue cover with a trust shield, repository nodes, and a scan grid.</desc>
+  <defs>
+    <linearGradient id="bg" x1="96" y1="52" x2="1104" y2="578" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#081220"/>
+      <stop offset="1" stop-color="#121E37"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="454" y1="120" x2="772" y2="506" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7DD3FC"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="accentSoft" x1="260" y1="170" x2="886" y2="538" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="40" fill="url(#bg)"/>
+  <rect x="56" y="56" width="1088" height="518" rx="32" fill="url(#accentSoft)" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="168" cy="122" r="9" fill="#22C55E"/>
+  <text x="196" y="130" fill="#E2E8F0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="30" font-weight="700">Agent Repo Trust Scanner</text>
+  <text x="196" y="176" fill="#94A3B8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="18">Deterministic trust planning for GitHub Code Quality rollouts</text>
+
+  <g transform="translate(128 228)">
+    <rect x="0" y="0" width="944" height="236" rx="28" fill="rgba(15,23,42,0.72)" stroke="rgba(125,211,252,0.22)"/>
+    <g opacity="0.95">
+      <rect x="32" y="30" width="208" height="176" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(148,163,184,0.18)"/>
+      <rect x="276" y="30" width="208" height="176" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(148,163,184,0.18)"/>
+      <rect x="520" y="30" width="208" height="176" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(148,163,184,0.18)"/>
+      <rect x="764" y="30" width="148" height="176" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(148,163,184,0.18)"/>
+      <path d="M240 118H276" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+      <path d="M484 118H520" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+      <path d="M728 118H764" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="136" cy="90" r="22" fill="rgba(125,211,252,0.18)" stroke="#7DD3FC" stroke-width="2"/>
+      <circle cx="136" cy="126" r="12" fill="#7DD3FC"/>
+      <circle cx="380" cy="90" r="22" fill="rgba(167,139,250,0.18)" stroke="#A78BFA" stroke-width="2"/>
+      <circle cx="380" cy="126" r="12" fill="#A78BFA"/>
+      <circle cx="624" cy="90" r="22" fill="rgba(56,189,248,0.18)" stroke="#38BDF8" stroke-width="2"/>
+      <circle cx="624" cy="126" r="12" fill="#38BDF8"/>
+      <circle cx="836" cy="90" r="22" fill="rgba(34,197,94,0.18)" stroke="#22C55E" stroke-width="2"/>
+      <circle cx="836" cy="126" r="12" fill="#22C55E"/>
+      <text x="38" y="238" fill="#E2E8F0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">Repo inventory</text>
+      <text x="282" y="238" fill="#E2E8F0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">Owner gates</text>
+      <text x="526" y="238" fill="#E2E8F0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">Policy checks</text>
+      <text x="770" y="238" fill="#E2E8F0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">Trust board</text>
+    </g>
+  </g>
+
+  <g transform="translate(786 116)">
+    <path d="M0 0L56 20V70C56 112 30 146 0 166C-30 146 -56 112 -56 70V20L0 0Z" fill="url(#accent)" fill-opacity="0.96"/>
+    <path d="M-24 74L-6 92L28 54" stroke="#081220" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text x="104" y="560" fill="#CBD5E1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="18">Trust matrix · owner gates · setup gates · deterministic report export</text>
+</svg>
