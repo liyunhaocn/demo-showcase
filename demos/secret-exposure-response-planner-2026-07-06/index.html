@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secret Exposure Response Planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="product-name">Secret Exposure Response Planner</span>
+          <div>
+            <h1>Secret exposure response scan</h1>
+            <p>Map severity, containment, owner coverage, and exportable response actions into one deterministic brief after a secret alert lands.</p>
+          </div>
+        </div>
+        <div class="simulation-badge" id="simulation-badge">
+          Demo simulation: deterministic incident response planning, no live API calls.
+        </div>
+      </header>
+
+      <div class="notice-row" id="storage-notice" role="status" aria-live="polite" hidden></div>
+      <div class="notice-row" id="message-row" role="status" aria-live="polite" hidden></div>
+      <div class="restore-banner" id="restore-banner" hidden>
+        <div>
+          <strong>Saved brief found</strong>
+          <span>Restore the last deterministic incident brief from this browser.</span>
+        </div>
+        <button class="secondary-button" type="button" id="restore-button" data-event="restore_last_brief_clicked">Restore last brief</button>
+      </div>
+
+      <main class="workspace">
+        <section class="input-panel" aria-labelledby="form-title">
+          <div class="section-heading">
+            <div>
+              <span class="kicker">Incident inputs</span>
+              <h2 id="form-title">Scan secret exposure</h2>
+            </div>
+          </div>
+
+          <div class="preset-strip" aria-label="Secret Exposure Response Planner presets">
+            <button class="preset-button" type="button" data-preset="public-pat" data-event="preset_selected">Try public PAT</button>
+            <button class="preset-button" type="button" data-preset="cloud-key" data-event="preset_selected">Try cloud key</button>
+            <button class="preset-button" type="button" data-preset="webhook-secret" data-event="preset_selected">Try webhook secret</button>
+          </div>
+
+          <form id="brand-form" class="brand-form" novalidate>
+            <label>
+              Incident name
+              <input id="incident-name" name="incidentName" autocomplete="organization" placeholder="Example: Public PAT in docs repo" />
+              <span class="field-error" id="incident-name-error"></span>
+            </label>
+
+            <label>
+              Alert source
+              <input id="alert-source" name="alertSource" placeholder="GitHub secret scanning public monitoring for enterprises" />
+              <span class="field-error" id="alert-source-error"></span>
+            </label>
+
+            <label>
+              Secret type
+              <input id="secret-type" name="secretType" placeholder="PAT, cloud key, webhook secret, or signing token" />
+              <span class="field-error" id="secret-type-error"></span>
+            </label>
+
+            <label>
+              Exposure surface
+              <input id="exposure-surface" name="exposureSurface" placeholder="public repo, logs, artifact, config file, or CI output" />
+              <span class="field-error" id="exposure-surface-error"></span>
+            </label>
+
+            <label>
+              Owning team
+              <input id="owning-team" name="owningTeam" placeholder="security, DevSecOps, platform engineering" />
+              <span class="field-error" id="owning-team-error"></span>
+            </label>
+
+            <label>
+              Alert age (hours)
+              <input id="alert-age-hours" name="alertAgeHours" inputmode="numeric" placeholder="15" />
+              <span class="field-error" id="alert-age-hours-error"></span>
+            </label>
+
+            <fieldset>
+              <legend>Objective</legend>
+              <div class="objective-control" role="radiogroup" aria-label="Objective">
+                <label>
+                  <input type="radio" name="objective" value="contain-fast" checked />
+                  <span>Contain fast</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="rotate-first" />
+                  <span>Rotate first</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="notify-comms" />
+                  <span>Notify comms</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label>
+              Alert inventory
+              <textarea id="review-models" name="reviewModels" rows="4" placeholder="alert | evidence | owner | state"></textarea>
+              <span class="field-hint" id="review-hint">Optional. Extra rows are ignored after the first 6 alerts.</span>
+            </label>
+
+            <div class="form-actions">
+              <button class="primary-button" type="submit" data-event="manual_generate_clicked">Generate incident brief</button>
+              <button class="secondary-button" type="button" id="reset-button" data-event="reset_demo_clicked">Reset demo</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="analysis-panel" aria-labelledby="analysis-title">
+          <div class="section-heading analysis-heading">
+            <div>
+              <span class="kicker">Response scan</span>
+              <h2 id="analysis-title">Severity matrix and owner checklist</h2>
+            </div>
+            <div class="view-toggle" role="radiogroup" aria-label="Report view">
+              <label>
+                <input type="radio" name="report-view" value="security-lead" checked />
+                <span data-event="security_lead_view_selected">Security lead</span>
+              </label>
+              <label>
+                <input type="radio" name="report-view" value="incident-commander" />
+                <span data-event="incident_commander_view_selected">Incident commander</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <h3>Run a diagnostic to see severity, containment coverage, owner mapping, and the incident checklist.</h3>
+            <p>Use a preset or enter a secret alert source with a small alert inventory. Results are deterministic demo simulations and do not call live GitHub services.</p>
+          </div>
+
+          <div class="report-shell" id="report-shell" hidden>
+            <div class="report-status-row">
+              <span class="simulation-chip">Demo simulation</span>
+              <span id="generated-at"></span>
+            </div>
+
+            <div class="score-grid" id="score-grid"></div>
+            <div class="summary-grid" id="summary-grid"></div>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Incident questions</span>
+                  <h3>What should the team verify first?</h3>
+                </div>
+              </div>
+              <div class="prompt-list" id="prompt-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Containment matrix</span>
+                  <h3>What stays critical, what needs owner follow-up, and what can move cleanly?</h3>
+                </div>
+              </div>
+              <div class="readiness-list" id="readiness-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Containment checklist</span>
+                  <h3>Prioritized response actions</h3>
+                </div>
+              </div>
+              <div class="action-list" id="action-list"></div>
+            </section>
+
+            <div class="export-bar">
+              <button class="primary-button" type="button" id="copy-button" data-event="brief_copied">Copy incident brief</button>
+              <button class="secondary-button" type="button" id="download-button" data-event="markdown_downloaded">Download client-ready report</button>
+              <button class="secondary-button" type="button" id="review-button">Show Markdown fallback</button>
+            </div>
+
+            <div class="review-panel" id="review-panel" hidden>
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Clipboard fallback</span>
+                  <h3>Select and copy manually</h3>
+                </div>
+                <div class="review-actions">
+                  <button class="secondary-button" type="button" id="select-review-button">Select all</button>
+                  <button class="secondary-button" type="button" id="close-review-button">Close</button>
+                </div>
+              </div>
+              <textarea id="review-markdown" readonly rows="12"></textarea>
+            </div>
+
+            <div class="interest-panel">
+              <strong>Want live secret-scanning import later?</strong>
+              <span>This demo records interest locally only. A future product would validate findings with live alert data before automated containment decisions.</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

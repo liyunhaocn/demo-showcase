@@ -1,6 +1,44 @@
 {
   "demos": [
     {
+      "id": "secret-exposure-response-planner-2026-07-06",
+      "name": "Secret Exposure Response Planner",
+      "date": "2026-07-06",
+      "status": "validated",
+      "score": 88,
+      "tagline": "Deterministic planner that turns secret alerts into severity, containment, owner checks, and exportable incident briefs before the leak response expands.",
+      "audience": "Security owners, DevSecOps, and platform engineers triaging GitHub secret scanning alerts.",
+      "problem": "Secret alerts need severity, containment, rotation, owner mapping, and comms in one response path, but teams usually triage them manually.",
+      "tags": [
+        "AI",
+        "Security",
+        "GitHub",
+        "Workflow",
+        "DeveloperTools"
+      ],
+      "monetization": [
+        "incident response brief pack",
+        "security playbook pack",
+        "enterprise admin pack"
+      ],
+      "validation": [
+        "validate/build passed",
+        "desktop browser smoke passed",
+        "375px mobile browser smoke passed",
+        "copy fallback and storage-off verified"
+      ],
+      "stack": [
+        "Static Frontend",
+        "Deterministic Simulation",
+        "Markdown Export"
+      ],
+      "cover": "./assets/secret-exposure-response-planner-cover.svg",
+      "links": {
+        "demo": "./demos/secret-exposure-response-planner-2026-07-06/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase"
+      }
+    },
+    {
       "id": "browser-tool-safety-planner-2026-07-03",
       "name": "Browser Tool Safety Planner",
       "date": "2026-07-03",
