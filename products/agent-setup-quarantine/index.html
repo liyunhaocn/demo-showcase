@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Setup Quarantine</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="product-name">Agent Setup Quarantine</span>
+          <div>
+            <h1>Pre-execution quarantine for AI coding-agent setup commands</h1>
+            <p>Paste a setup trace, isolate remote payload and secret risks, and generate the operator gates required before an AI coding agent continues.</p>
+          </div>
+        </div>
+        <div class="simulation-badge">Deterministic static demo. No live repo, network, model, or package calls.</div>
+      </header>
+
+      <div class="message-row" id="message-row" role="status" aria-live="polite" hidden></div>
+
+      <main class="workspace">
+        <section class="input-panel" aria-labelledby="form-title">
+          <div class="section-heading">
+            <div>
+              <span class="kicker">Quarantine inputs</span>
+              <h2 id="form-title">Scan a setup trace</h2>
+            </div>
+          </div>
+
+          <div class="preset-strip" aria-label="Setup trace presets">
+            <button class="preset-button" type="button" data-preset="clean-repo-trap">Clean repo trap</button>
+            <button class="preset-button" type="button" data-preset="enterprise-bootstrap">Enterprise bootstrap</button>
+            <button class="preset-button" type="button" data-preset="oss-maintainer">OSS maintainer review</button>
+          </div>
+
+          <form id="quarantine-form" class="quarantine-form" novalidate>
+            <label>
+              Workspace or lane
+              <input id="workspace-name" autocomplete="organization" placeholder="Example: Clean repo onboarding lane" />
+              <span class="field-error" id="workspace-name-error"></span>
+            </label>
+
+            <label>
+              Agent runtime
+              <input id="agent-runtime" placeholder="Claude Code, Copilot coding agent, Cursor agent" />
+              <span class="field-error" id="agent-runtime-error"></span>
+            </label>
+
+            <label>
+              Accountable owner
+              <input id="owner" placeholder="DevEx security" />
+              <span class="field-error" id="owner-error"></span>
+            </label>
+
+            <fieldset>
+              <legend>Objective</legend>
+              <div class="objective-control" role="radiogroup" aria-label="Quarantine objective">
+                <label>
+                  <input type="radio" name="objective" value="prevent-runtime-payload" checked />
+                  <span>Prevent runtime payload</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="approve-safe-setup" />
+                  <span>Approve safe setup</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="screen-contributor-setup" />
+                  <span>Screen contributor setup</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label>
+              Setup command trace
+              <textarea id="commands" rows="8" spellcheck="false" placeholder="command | source | owner | note"></textarea>
+              <span class="field-hint">Use one command per line. Literal shell pipes like `curl ... | bash` are preserved.</span>
+              <span class="field-error" id="commands-error"></span>
+            </label>
+
+            <div class="form-actions">
+              <button class="primary-button" type="submit">Generate quarantine brief</button>
+              <button class="secondary-button" type="button" id="reset-demo">Reset demo</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="analysis-panel" aria-labelledby="analysis-title">
+          <div class="section-heading analysis-heading">
+            <div>
+              <span class="kicker">Operator brief</span>
+              <h2 id="analysis-title">Risk, gates, and actions</h2>
+            </div>
+            <div class="view-toggle" role="radiogroup" aria-label="Report view">
+              <label>
+                <input type="radio" name="report-view" value="operator" checked />
+                <span>Operator</span>
+              </label>
+              <label>
+                <input type="radio" name="report-view" value="security" />
+                <span>Security</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <h3>Run a setup quarantine scan to see command risk, owner gaps, sandbox gates, and an exportable operator brief.</h3>
+            <p>Use a preset or paste a trace from a local AI coding-agent setup run.</p>
+          </div>
+
+          <div class="report-shell" id="report" hidden>
+            <div class="report-status-row">
+              <span class="simulation-chip">Demo simulation</span>
+              <span id="generated-at"></span>
+            </div>
+
+            <div class="metrics-grid" id="metrics"></div>
+            <div class="summary-grid" id="summary"></div>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Findings</span>
+                  <h3>Commands that need quarantine review</h3>
+                </div>
+              </div>
+              <div class="finding-list" id="findings"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Gates</span>
+                  <h3>What must be blocked, reviewed, or sandboxed?</h3>
+                </div>
+              </div>
+              <div class="gate-list" id="gates"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Actions</span>
+                  <h3>Operator checklist</h3>
+                </div>
+              </div>
+              <div class="action-list" id="actions"></div>
+            </section>
+
+            <div class="export-bar">
+              <button class="primary-button" type="button" id="copy-brief">Copy brief</button>
+              <button class="secondary-button" type="button" id="download-brief">Download Markdown</button>
+              <button class="secondary-button" type="button" id="show-fallback">Show Markdown fallback</button>
+            </div>
+
+            <div class="fallback-panel" id="fallback-panel" hidden>
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Fallback</span>
+                  <h3>Manual copy buffer</h3>
+                </div>
+                <div class="fallback-actions">
+                  <button class="secondary-button" type="button" id="select-fallback">Select all</button>
+                  <button class="secondary-button" type="button" id="close-fallback">Close</button>
+                </div>
+              </div>
+              <textarea id="markdown-fallback" rows="13" readonly></textarea>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

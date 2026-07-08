@@ -1,6 +1,46 @@
 {
   "demos": [
     {
+      "id": "agent-setup-quarantine-2026-07-07",
+      "name": "Agent Setup Quarantine",
+      "date": "2026-07-07",
+      "status": "validated",
+      "score": 91,
+      "tagline": "Deterministic quarantine brief that blocks risky AI coding-agent setup commands before remote payloads, DNS TXT tricks, or secret exposure reach execution.",
+      "audience": "DevEx security, platform engineering, and engineering managers approving AI coding-agent setup runs.",
+      "problem": "Agentic coding workflows can execute clean-looking setup commands that fetch remote payloads or expose secrets before humans see the risk, so teams need a pre-execution quarantine brief.",
+      "tags": [
+        "AI",
+        "Agent Security",
+        "DeveloperTools",
+        "DevSecOps",
+        "Workflow"
+      ],
+      "monetization": [
+        "agent setup review pack",
+        "DevEx security checklist pack",
+        "enterprise quarantine policy pack"
+      ],
+      "validation": [
+        "unit scoring test passed",
+        "static demo built locally",
+        "validate/build passed",
+        "desktop browser smoke passed",
+        "mobile browser smoke passed",
+        "copy fallback and storage-off verified"
+      ],
+      "stack": [
+        "Static Frontend",
+        "Deterministic Simulation",
+        "Markdown Export"
+      ],
+      "cover": "./assets/agent-setup-quarantine-cover.svg",
+      "links": {
+        "demo": "./demos/agent-setup-quarantine/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase"
+      }
+    },
+    {
       "id": "secret-exposure-response-planner-2026-07-06",
       "name": "Secret Exposure Response Planner",
       "date": "2026-07-06",
