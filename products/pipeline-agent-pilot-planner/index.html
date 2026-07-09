@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pipeline Agent Pilot Planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="product-name">Pipeline Agent Pilot Planner</span>
+          <div>
+            <h1>Turn a CRM agent idea into a controlled revenue pilot</h1>
+            <p>
+              RevOps teams can scope a Salesforce-style pipeline agent, score readiness, and export the pilot gates before any live CRM integration starts.
+            </p>
+          </div>
+        </div>
+        <div class="simulation-badge">
+          Deterministic static demo. No live CRM, AI model, customer data, or Salesforce calls.
+        </div>
+      </header>
+
+      <div class="notice-row" id="notice-row" role="status" aria-live="polite" hidden></div>
+      <div class="restore-banner" id="restore-banner" hidden>
+        <div>
+          <strong>Saved pilot brief found</strong>
+          <span>Restore the last deterministic report from this browser.</span>
+        </div>
+        <button class="secondary-button" type="button" id="restore-button">Restore last brief</button>
+      </div>
+
+      <main class="workspace">
+        <section class="input-panel" aria-labelledby="form-title">
+          <div class="section-heading">
+            <div>
+              <span class="kicker">Pilot inputs</span>
+              <h2 id="form-title">CRM agent scope</h2>
+            </div>
+          </div>
+
+          <div class="preset-strip" aria-label="Pipeline agent presets">
+            <button class="preset-button" type="button" data-preset="stalled-deals">Stalled deals</button>
+            <button class="preset-button" type="button" data-preset="forecast-hygiene">Forecast hygiene</button>
+            <button class="preset-button" type="button" data-preset="manager-coach">Manager coach</button>
+          </div>
+
+          <form id="pilot-form" class="pilot-form" novalidate>
+            <label>
+              Company or team
+              <input id="org-name" name="orgName" autocomplete="organization" placeholder="Example: Northstar Revenue" />
+              <span class="field-error" id="org-name-error"></span>
+            </label>
+
+            <label>
+              CRM system
+              <input id="crm-system" name="crmSystem" placeholder="Salesforce Sales Cloud, HubSpot, Dynamics" />
+              <span class="field-error" id="crm-system-error"></span>
+            </label>
+
+            <label>
+              Sales segment
+              <input id="segment" name="segment" placeholder="Mid-market outbound, enterprise expansion" />
+              <span class="field-error" id="segment-error"></span>
+            </label>
+
+            <fieldset>
+              <legend>Pilot objective</legend>
+              <div class="objective-control" role="radiogroup" aria-label="Pilot objective">
+                <label>
+                  <input type="radio" name="objective" value="recover-stalled-deals" checked />
+                  <span>Recover stalled deals</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="increase-forecast-confidence" />
+                  <span>Forecast confidence</span>
+                </label>
+                <label>
+                  <input type="radio" name="objective" value="speed-rep-followup" />
+                  <span>Rep follow-up</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field-grid">
+              <label>
+                Pipeline value
+                <input id="pipeline-value" name="pipelineValue" inputmode="numeric" placeholder="4200000" />
+                <span class="field-error" id="pipeline-value-error"></span>
+              </label>
+
+              <label>
+                Win rate %
+                <input id="win-rate" name="winRate" inputmode="numeric" placeholder="24" />
+                <span class="field-error" id="win-rate-error"></span>
+              </label>
+
+              <label>
+                Avg cycle days
+                <input id="cycle-days" name="cycleDays" inputmode="numeric" placeholder="51" />
+                <span class="field-error" id="cycle-days-error"></span>
+              </label>
+
+              <label>
+                Stale deals
+                <input id="stale-deals" name="staleDeals" inputmode="numeric" placeholder="31" />
+                <span class="field-error" id="stale-deals-error"></span>
+              </label>
+            </div>
+
+            <div class="select-grid">
+              <label>
+                Data quality
+                <select id="data-quality" name="dataQuality">
+                  <option value="poor">Poor</option>
+                  <option value="mixed">Mixed</option>
+                  <option value="good" selected>Good</option>
+                  <option value="excellent">Excellent</option>
+                </select>
+              </label>
+
+              <label>
+                Owner coverage
+                <select id="owner-coverage" name="ownerCoverage">
+                  <option value="unknown">Unknown</option>
+                  <option value="partial">Partial</option>
+                  <option value="named" selected>Named</option>
+                </select>
+              </label>
+
+              <label>
+                Policy posture
+                <select id="compliance-posture" name="compliancePosture">
+                  <option value="none">No policy</option>
+                  <option value="approval-needed" selected>Approval needed</option>
+                  <option value="policy-ready">Policy ready</option>
+                </select>
+              </label>
+
+              <label>
+                Agent scope
+                <select id="agent-scope" name="agentScope">
+                  <option value="next-best-action" selected>Next best action</option>
+                  <option value="forecast-hygiene">Forecast hygiene</option>
+                  <option value="manager-coach">Manager coach</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Known blockers
+              <textarea id="blockers" name="blockers" rows="3" placeholder="security review, manager adoption, data cleanup"></textarea>
+              <span class="field-hint">Optional. Use commas for named blockers.</span>
+            </label>
+
+            <div class="form-actions">
+              <button class="primary-button" type="submit">Generate pilot brief</button>
+              <button class="secondary-button" type="button" id="reset-button">Reset demo</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="analysis-panel" aria-labelledby="analysis-title">
+          <div class="section-heading analysis-heading">
+            <div>
+              <span class="kicker">Pilot brief</span>
+              <h2 id="analysis-title">Readiness, ROI, gates, and rollout path</h2>
+            </div>
+            <div class="view-toggle" role="radiogroup" aria-label="Report view">
+              <label>
+                <input type="radio" name="report-view" value="revops" checked />
+                <span>RevOps</span>
+              </label>
+              <label>
+                <input type="radio" name="report-view" value="exec" />
+                <span>Exec</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <h3>Generate a pilot brief to see revenue upside, readiness gaps, CRM safety gates, and the commercial test.</h3>
+            <p>Start with a preset or enter your own pipeline context. Results are deterministic and stored locally only when browser storage is available.</p>
+          </div>
+
+          <div class="report-shell" id="report-shell" hidden>
+            <div class="report-status-row">
+              <span class="simulation-chip">Demo simulation</span>
+              <span id="generated-at"></span>
+            </div>
+
+            <div class="score-grid" id="score-grid"></div>
+            <div class="summary-grid" id="summary-grid"></div>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Decision points</span>
+                  <h3>What should the team believe or challenge?</h3>
+                </div>
+              </div>
+              <div class="finding-list" id="finding-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Safety gates</span>
+                  <h3>What must be true before CRM changes go live?</h3>
+                </div>
+              </div>
+              <div class="gate-list" id="gate-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Pilot path</span>
+                  <h3>2-week rollout plan</h3>
+                </div>
+              </div>
+              <div class="milestone-list" id="milestone-list"></div>
+            </section>
+
+            <section class="report-section">
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Commercial test</span>
+                  <h3>Pricing and validation hypothesis</h3>
+                </div>
+              </div>
+              <div class="pricing-list" id="pricing-list"></div>
+            </section>
+
+            <div class="export-bar">
+              <button class="primary-button" type="button" id="copy-button">Copy brief</button>
+              <button class="secondary-button" type="button" id="download-button">Download Markdown</button>
+              <button class="secondary-button" type="button" id="fallback-button">Show Markdown fallback</button>
+            </div>
+
+            <div class="fallback-panel" id="fallback-panel" hidden>
+              <div class="section-heading inline-heading">
+                <div>
+                  <span class="kicker">Fallback</span>
+                  <h3>Manual copy buffer</h3>
+                </div>
+                <div class="fallback-actions">
+                  <button class="secondary-button" type="button" id="select-fallback-button">Select all</button>
+                  <button class="secondary-button" type="button" id="close-fallback-button">Close</button>
+                </div>
+              </div>
+              <textarea id="markdown-fallback" readonly rows="13"></textarea>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

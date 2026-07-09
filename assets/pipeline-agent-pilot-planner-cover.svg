@@ -1,0 +1,32 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" fill="#F4F7F6"/>
+  <rect x="60" y="54" width="1080" height="612" rx="18" fill="#FFFFFF" stroke="#D8E2DF" stroke-width="4"/>
+  <rect x="60" y="54" width="1080" height="94" rx="18" fill="#1B2327"/>
+  <text x="100" y="112" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">Pipeline Agent Pilot Planner</text>
+  <text x="100" y="186" fill="#17715D" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">RevOps agent pilot brief</text>
+  <text x="100" y="224" fill="#5E6D72" font-family="Inter, Arial, sans-serif" font-size="20">Score readiness, ROI, safety gates, and 2-week rollout path before CRM agents go live.</text>
+
+  <rect x="100" y="276" width="292" height="150" rx="14" fill="#EAF3EF" stroke="#BFD2CB" stroke-width="3"/>
+  <text x="126" y="326" fill="#5E6D72" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">READINESS</text>
+  <text x="126" y="388" fill="#0D4B3E" font-family="Inter, Arial, sans-serif" font-size="62" font-weight="900">83</text>
+
+  <rect x="454" y="276" width="292" height="150" rx="14" fill="#EDF2F8" stroke="#C0D0E2" stroke-width="3"/>
+  <text x="480" y="326" fill="#5E6D72" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">ROI INDEX</text>
+  <text x="480" y="388" fill="#2A5D8F" font-family="Inter, Arial, sans-serif" font-size="62" font-weight="900">87</text>
+
+  <rect x="808" y="276" width="292" height="150" rx="14" fill="#FBF1E5" stroke="#E5CDA9" stroke-width="3"/>
+  <text x="834" y="326" fill="#5E6D72" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">RISK</text>
+  <text x="834" y="388" fill="#A56317" font-family="Inter, Arial, sans-serif" font-size="50" font-weight="900">Medium</text>
+
+  <rect x="100" y="480" width="1000" height="42" rx="12" fill="#F8FAF9" stroke="#D8E2DF" stroke-width="3"/>
+  <circle cx="130" cy="501" r="10" fill="#17715D"/>
+  <text x="156" y="509" fill="#1B2327" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Sandbox-only suggestions for 10 business days</text>
+
+  <rect x="100" y="544" width="1000" height="42" rx="12" fill="#F8FAF9" stroke="#D8E2DF" stroke-width="3"/>
+  <circle cx="130" cy="565" r="10" fill="#2A5D8F"/>
+  <text x="156" y="573" fill="#1B2327" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Manager approval before any CRM field changes</text>
+
+  <rect x="100" y="608" width="1000" height="42" rx="12" fill="#F8FAF9" stroke="#D8E2DF" stroke-width="3"/>
+  <circle cx="130" cy="629" r="10" fill="#A56317"/>
+  <text x="156" y="637" fill="#1B2327" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Export pilot brief for RevOps, sales managers, and security review</text>
+</svg>

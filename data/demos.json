@@ -1,6 +1,46 @@
 {
   "demos": [
     {
+      "id": "pipeline-agent-pilot-planner-2026-07-09",
+      "name": "Pipeline Agent Pilot Planner",
+      "date": "2026-07-09",
+      "status": "validated",
+      "score": 90,
+      "tagline": "Deterministic RevOps workbench that turns a CRM pipeline-agent idea into readiness, ROI, safety gates, and a 2-week pilot brief before live Salesforce changes.",
+      "audience": "RevOps leaders, sales operations teams, CRM admins, and AI deployment consultants piloting revenue workflow agents.",
+      "problem": "Sales teams want pipeline AI agents, but CRM data quality, manager approvals, field-change risk, and ROI evidence are usually unresolved before pilot launch.",
+      "tags": [
+        "AI",
+        "RevOps",
+        "CRM",
+        "Salesforce",
+        "Workflow"
+      ],
+      "monetization": [
+        "pilot readiness package",
+        "RevOps enablement workshop",
+        "enterprise CRM agent governance"
+      ],
+      "validation": [
+        "unit scoring test passed",
+        "static demo built locally",
+        "validate/build passed",
+        "desktop browser smoke passed",
+        "375px mobile browser smoke passed",
+        "copy fallback and storage-off verified"
+      ],
+      "stack": [
+        "Static Frontend",
+        "Deterministic Simulation",
+        "Markdown Export"
+      ],
+      "cover": "./assets/pipeline-agent-pilot-planner-cover.svg",
+      "links": {
+        "demo": "./demos/pipeline-agent-pilot-planner/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase"
+      }
+    },
+    {
       "id": "agent-setup-quarantine-2026-07-07",
       "name": "Agent Setup Quarantine",
       "date": "2026-07-07",
