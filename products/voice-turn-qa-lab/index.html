@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Voice Turn QA Lab</title>
+    <meta
+      name="description"
+      content="Deterministic voice transcript acceptance lab for pilot signoff, retest packets, and human handoff evidence."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-report-state="idle" data-schema-version="1">
+    <div class="page-shell">
+      <header class="hero">
+        <div class="eyebrow">Voice QA acceptance lab</div>
+        <h1>Voice Turn QA Lab</h1>
+        <p class="hero-copy">
+          Turn one timestamped transcript into a pass, needs-review, or fail decision with turn-level evidence, a
+          clean Markdown packet, and a local-only browser flow.
+        </p>
+        <div class="boundary-row" id="notice-row" aria-live="polite">
+          <span class="boundary-chip">Deterministic demo simulation. No live call, audio, model, provider, or customer data.</span>
+        </div>
+      </header>
+
+      <div class="layout">
+        <section class="panel form-panel" aria-labelledby="form-title">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Transcript intake</p>
+              <h2 id="form-title">Build the acceptance packet</h2>
+            </div>
+            <div class="status-stack" id="storage-notice" aria-live="polite"></div>
+          </div>
+
+          <div class="preset-row" id="preset-row" aria-label="Demo presets"></div>
+
+          <form id="qa-form" novalidate>
+            <div class="field-grid">
+              <label class="field">
+                <span>Project name</span>
+                <input id="project-name" name="project-name" type="text" maxlength="80" autocomplete="off" />
+                <small id="project-name-error" class="field-error" aria-live="polite"></small>
+              </label>
+
+              <label class="field">
+                <span>Use case</span>
+                <select id="use-case" name="use-case">
+                  <option value="billing-support">Billing support</option>
+                  <option value="appointment-change">Appointment change</option>
+                  <option value="service-outage">Service outage</option>
+                </select>
+                <small id="use-case-error" class="field-error" aria-live="polite"></small>
+              </label>
+
+              <label class="field">
+                <span>Acceptance profile</span>
+                <select id="acceptance-profile" name="acceptance-profile">
+                  <option value="pilot">Pilot</option>
+                  <option value="production">Production</option>
+                  <option value="strict">Strict</option>
+                </select>
+                <small id="acceptance-profile-error" class="field-error" aria-live="polite"></small>
+              </label>
+
+              <label class="field">
+                <span>Expected outcome</span>
+                <select id="expected-outcome" name="expected-outcome">
+                  <option value="resolved">Resolved</option>
+                  <option value="scheduled">Scheduled</option>
+                  <option value="human-handoff">Human handoff</option>
+                </select>
+                <small id="expected-outcome-error" class="field-error" aria-live="polite"></small>
+              </label>
+            </div>
+
+            <label class="checkbox-row">
+              <input id="disclosure-required" name="disclosure-required" type="checkbox" />
+              <span>Disclosure required on the first agent turn</span>
+            </label>
+            <small id="disclosure-required-error" class="field-error" aria-live="polite"></small>
+
+            <label class="field transcript-field">
+              <span>Transcript</span>
+              <textarea
+                id="transcript"
+                name="transcript"
+                spellcheck="false"
+                rows="16"
+                placeholder="00:00.000-00:01.200 | AGENT | Hi, I am the automated support assistant."
+              ></textarea>
+              <small id="transcript-error" class="field-error" aria-live="polite"></small>
+            </label>
+
+            <div class="action-row">
+              <button type="submit" class="primary-button" id="analyze-button">Analyze transcript</button>
+              <button type="button" class="secondary-button" id="save-button">Save report</button>
+              <button type="button" class="secondary-button" id="reset-button">Reset demo</button>
+            </div>
+          </form>
+
+          <div class="inline-message" id="restore-banner" hidden>
+            <span>Saved reports stay in this browser.</span>
+            <button type="button" class="text-button" id="restore-button">Restore last report</button>
+          </div>
+        </section>
+
+        <section class="panel report-panel" id="report-shell" aria-labelledby="report-title">
+          <div id="empty-state" class="empty-state">
+            <p class="panel-kicker">Acceptance output</p>
+            <h2 id="report-title">Your report will appear here</h2>
+            <p>
+              Pick a preset or enter a transcript, then analyze to generate the verdict, issue list, and retest packet.
+            </p>
+          </div>
+
+          <div id="report-view" class="report-view" hidden>
+            <div class="report-head">
+              <div>
+                <p class="panel-kicker">Acceptance packet</p>
+                <h2 id="report-title-live">Voice Turn QA Lab report</h2>
+              </div>
+              <div class="verdict-box" id="verdict-box" aria-live="polite"></div>
+            </div>
+
+            <div class="summary-strip" id="summary-strip"></div>
+
+            <section class="block">
+              <div class="block-head">
+                <h3>Metrics</h3>
+                <p>Thresholds stay visible next to the observed values.</p>
+              </div>
+              <div class="metric-grid" id="metric-grid"></div>
+            </section>
+
+            <section class="block">
+              <div class="block-head">
+                <h3>Timeline</h3>
+                <p>Turn-by-turn evidence with time ranges and speaking role.</p>
+              </div>
+              <ol class="timeline" id="timeline"></ol>
+            </section>
+
+            <section class="block">
+              <div class="block-head">
+                <h3>Issues</h3>
+                <p>Ordered by severity, then time.</p>
+              </div>
+              <div class="card-list" id="incident-list"></div>
+            </section>
+
+            <section class="block two-up">
+              <div>
+                <div class="block-head">
+                  <h3>Acceptance checks</h3>
+                  <p>Pass/fail gate summary for the current profile.</p>
+                </div>
+                <ul class="check-list" id="acceptance-list"></ul>
+              </div>
+              <div>
+                <div class="block-head">
+                  <h3>Retest checklist</h3>
+                  <p>Shortest action list derived from the current issues.</p>
+                </div>
+                <ol class="check-list retest-list" id="retest-list"></ol>
+              </div>
+            </section>
+
+            <section class="block export-block">
+              <div class="block-head">
+                <h3>Export</h3>
+                <p>Copy, download, or open the fallback buffer.</p>
+              </div>
+              <div class="action-row">
+                <button type="button" class="primary-button" id="copy-button">Copy Markdown</button>
+                <button type="button" class="secondary-button" id="download-button">Download Markdown</button>
+              </div>
+            </section>
+
+            <section class="fallback-panel" id="fallback-panel" hidden>
+              <div class="block-head">
+                <h3>Manual copy fallback</h3>
+                <p>Clipboard access is unavailable or was forced off.</p>
+              </div>
+              <textarea id="markdown-fallback" readonly rows="18"></textarea>
+              <div class="action-row">
+                <button type="button" class="secondary-button" id="select-drift-button">Select markdown</button>
+                <button type="button" class="secondary-button" id="close-drift-button">Close fallback</button>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

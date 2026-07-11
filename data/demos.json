@@ -1,6 +1,47 @@
 {
   "demos": [
     {
+      "id": "voice-turn-qa-lab-2026-07-11",
+      "name": "Voice Turn QA Lab",
+      "date": "2026-07-11",
+      "status": "validated",
+      "score": 92,
+      "tagline": "Deterministic transcript acceptance lab that signs off voice-agent pilots with turn-level evidence, retest packets, and human-handoff checks.",
+      "audience": "Voice-agent product leads, QA leads, and implementation consultants preparing pilot traffic.",
+      "problem": "Teams can demo a clean scripted call and still miss talk-over, dead air, slow yield, missed repair, or a missing human handoff before pilot launch.",
+      "tags": [
+        "AI",
+        "Voice AI",
+        "QA",
+        "Transcript Eval",
+        "Workflow"
+      ],
+      "monetization": [
+        "pilot acceptance packet",
+        "concierge verification",
+        "retest pack"
+      ],
+      "validation": [
+        "unit tests passed",
+        "validate/build passed",
+        "desktop browser smoke passed",
+        "375px mobile smoke passed",
+        "copy fallback verified",
+        "storage-off verified",
+        "save/restore verified"
+      ],
+      "stack": [
+        "Static Frontend",
+        "Deterministic Analysis",
+        "Markdown Export"
+      ],
+      "cover": "./assets/voice-turn-qa-lab-cover.svg",
+      "links": {
+        "demo": "./demos/voice-turn-qa-lab/",
+        "repo": "https://github.com/liyunhaocn/demo-showcase"
+      }
+    },
+    {
       "id": "pipeline-agent-pilot-planner-2026-07-09",
       "name": "Pipeline Agent Pilot Planner",
       "date": "2026-07-09",

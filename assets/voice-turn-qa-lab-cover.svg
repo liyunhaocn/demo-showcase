@@ -1,0 +1,31 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Voice Turn QA Lab</title>
+  <desc id="desc">A dark signal-desk cover with timeline cards and verdict chips for a voice transcript acceptance lab.</desc>
+  <rect width="1200" height="630" rx="36" fill="#07111E"/>
+  <rect x="26" y="26" width="1148" height="578" rx="30" fill="url(#bg)"/>
+  <circle cx="1030" cy="126" r="132" fill="#6CE0C2" fill-opacity="0.08"/>
+  <circle cx="180" cy="520" r="170" fill="#F0BF5E" fill-opacity="0.08"/>
+  <rect x="64" y="64" width="228" height="32" rx="16" fill="#112036" stroke="#6CE0C2" stroke-opacity="0.35"/>
+  <text x="84" y="86" fill="#6CE0C2" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="700" letter-spacing="1.8">VOICE QA ACCEPTANCE LAB</text>
+  <text x="64" y="186" fill="#EDF3EA" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="72" font-weight="800">Voice Turn QA Lab</text>
+  <text x="66" y="238" fill="#AEBACC" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="26" font-weight="500">Deterministic transcript signoff for pilot readiness,</text>
+  <text x="66" y="272" fill="#AEBACC" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="26" font-weight="500">retest packets, and human handoff evidence.</text>
+  <rect x="66" y="320" width="230" height="64" rx="18" fill="#112036" stroke="#6CE0C2" stroke-opacity="0.45"/>
+  <text x="88" y="348" fill="#EDF3EA" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="20" font-weight="700">PASS</text>
+  <text x="88" y="370" fill="#6CE0C2" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="600">Deterministic demo simulation</text>
+  <rect x="334" y="320" width="460" height="64" rx="18" fill="#0E1B31" stroke="#F0BF5E" stroke-opacity="0.26"/>
+  <text x="356" y="348" fill="#EDF3EA" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="700">Timeline • Evidence • Verdict</text>
+  <text x="356" y="371" fill="#AEBACC" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="500">No live call, audio, model, provider, or customer data.</text>
+  <rect x="66" y="430" width="1064" height="112" rx="22" fill="#0C1628" stroke="#9BADCD" stroke-opacity="0.14"/>
+  <rect x="88" y="454" width="156" height="64" rx="18" fill="#111D33" stroke="#9BADCD" stroke-opacity="0.16"/>
+  <rect x="258" y="454" width="220" height="64" rx="18" fill="#111D33" stroke="#9BADCD" stroke-opacity="0.16"/>
+  <rect x="492" y="454" width="180" height="64" rx="18" fill="#111D33" stroke="#9BADCD" stroke-opacity="0.16"/>
+  <rect x="686" y="454" width="192" height="64" rx="18" fill="#111D33" stroke="#9BADCD" stroke-opacity="0.16"/>
+  <rect x="892" y="454" width="216" height="64" rx="18" fill="#111D33" stroke="#9BADCD" stroke-opacity="0.16"/>
+  <defs>
+    <linearGradient id="bg" x1="600" y1="26" x2="600" y2="604" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1425"/>
+      <stop offset="1" stop-color="#08101C"/>
+    </linearGradient>
+  </defs>
+</svg>
